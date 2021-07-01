@@ -1,4 +1,4 @@
-name: Python package gen_mqtt_servce
+name: Python package gen_mqtt_service
 on:
   push:
     branches: [ master ]

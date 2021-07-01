@@ -1,4 +1,4 @@
-name: TOC Generator gen_mqtt_servce
+name: TOC Generator gen_mqtt_service
 on: push
 jobs:
   generateTOC:

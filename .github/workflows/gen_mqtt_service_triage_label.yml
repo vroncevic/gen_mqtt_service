@@ -1,4 +1,4 @@
-name: Triage gen_mqtt_servce label
+name: Triage gen_mqtt_service label
 on:
   issues:
     types: [opened]
