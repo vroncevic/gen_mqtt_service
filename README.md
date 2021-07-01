@@ -1,33 +1,122 @@
-# Generate MQTT service skeleton
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_mqtt_servce/dev/docs/gen_mqtt_servce_logo.png" width="25%">
+
+# Generate MQTT
+
+**gen_mqtt_servce** is tool for generation of MQTT modules.
+
+Developed in **[python](https://www.python.org/)** code: **100%**.
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-### INSTALLATION
+![Python package](https://github.com/vroncevic/gen_mqtt_servce/workflows/Python%20package%20gen_mqtt_servce/badge.svg?branch=master) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_mqtt_servce.svg)](https://github.com/vroncevic/gen_mqtt_servce/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_mqtt_servce.svg)](https://github.com/vroncevic/gen_mqtt_servce/graphs/contributors)
 
-To install this set of modules type the following:
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
 
+- [Installation](#installation)
+    - [Install using pip](#install-using-pip)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
+- [Dependencies](#dependencies)
+- [Generation flow of py module](#generation-flow-of-py-module)
+- [Tool structure](#tool-structure)
+- [Docs](#docs)
+- [Copyright and Licence](#copyright-and-licence)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+### Installation
+
+![Install Python2 Package](https://github.com/vroncevic/gen_mqtt_servce/workflows/Install%20Python2%20Package%20gen_mqtt_servce/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_mqtt_servce/workflows/Install%20Python3%20Package%20gen_mqtt_servce/badge.svg?branch=master)
+
+Currently there are three ways to install tool:
+* Install process based on pip
+* Install process based on setup.py (setuptools)
+* Install process based on docker mechanism
+
+##### Install using pip
+
+Python package is located at **[pypi.org](https://pypi.org/project/gen-mqtt-servce/)**.
+
+You can install by using pip
 ```
-cp -R ~/gen_mqtt_service/bin/   /root/scripts/gen_mqtt_service/ver.1.0/
-cp -R ~/gen_mqtt_service/conf/  /root/scripts/gen_mqtt_service/ver.1.0/
-cp -R ~/gen_mqtt_service/log/   /root/scripts/gen_mqtt_service/ver.1.0/
+# python2
+pip install gen-mqtt-servce
+# python3
+pip3 install gen-mqtt-servce
 ```
 
-### DEPENDENCIES
+##### Install using setuptools
 
-This module requires these other modules and libraries:
+Navigate to release **[page](https://github.com/vroncevic/gen_mqtt_servce/releases/)** download and extract release archive.
 
-* ats_utilities https://vroncevic.github.io/ats_utilities
+To install modules, locate and run setup.py with arguments
+```
+tar xvzf gen_mqtt_servce-x.y.z.tar.gz
+cd gen_mqtt_servce-x.y.z/
+# python2
+pip install -r requirements.txt
+python setup.py install_lib
+python setup.py install_data
+python setup.py install_egg_info
+# python3
+pip3 install -r requirements.txt
+python3 setup.py install_lib
+python3 setup.py install_data
+python3 setup.py install_egg_info
+```
+
+##### Install using docker
+
+You can use docker to create image/container.
+
+[![gen_mqtt_servce docker checker](https://github.com/vroncevic/gen_mqtt_servce/workflows/gen_mqtt_servce%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_mqtt_servce/actions?query=workflow%3A%22gen_mqtt_servce+docker+checker%22)
+
+### Dependencies
+
+**gen_mqtt_servce** requires next modules and libraries:
+
+* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+
+### Generation flow of py module
+
+Base flow of generation process:
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_mqtt_servce/dev/docs/gen_mqtt_servce_flow.png)
 
 ### Tool structure
 
-### COPYRIGHT AND LICENCE
+**gen_mqtt_servce** is based on OOP:
 
-Copyright (C) 2020 by https://vroncevic.github.io/gen_mqtt_service/
+Generator structure:
 
-This tool is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.7/3.4 or,
+```
+
+```
+
+### Docs
+
+[![Documentation Status](https://readthedocs.org/projects/gen_mqtt_servce/badge/?version=latest)](https://gen_mqtt_servce.readthedocs.io/projects/gen_mqtt_servce/en/latest/?badge=latest)
+
+More documentation and info at:
+* [gen_mqtt_servce.readthedocs.io](https://gen_mqtt_servce.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
+
+### Copyright and Licence
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+Copyright (C) 2020 by [vroncevic.github.io/gen_mqtt_servce](https://vroncevic.github.io/gen_mqtt_servce)
+
+**gen_mqtt_servce** is free software; you can redistribute it and/or modify
+it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
 
-:sparkles:
+Lets help and support PSF.
+
+[![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_mqtt_servce/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
