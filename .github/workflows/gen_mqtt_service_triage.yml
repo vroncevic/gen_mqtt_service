@@ -1,4 +1,4 @@
-name: Triage gen_mqtt_servce
+name: Triage gen_mqtt_service
 on:
   issues:
     types: [opened]
@@ -13,4 +13,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: comment "[gen_mqtt_servce] should be supported for Python 2.7, 3.5, 3.6, 3.7, 3.8"
+          args: comment "[gen_mqtt_service] should be supported for Python 2.7, 3.5, 3.6, 3.7, 3.8"

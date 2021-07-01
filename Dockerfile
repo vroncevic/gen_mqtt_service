@@ -33,17 +33,17 @@ COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN pip3 install -r requirements.txt
 RUN rm -f requirements.txt
-RUN mkdir /gen_mqtt_servce/
-COPY gen_mqtt_servce /gen_mqtt_servce/
+RUN mkdir /gen_mqtt_service/
+COPY gen_mqtt_service /gen_mqtt_service/
 COPY setup.py /
 COPY README.md /
-RUN find /gen_mqtt_servce/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
+RUN find /gen_mqtt_service/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python setup.py install_lib
 RUN python setup.py install_egg_info
 RUN python setup.py install_data
 RUN python3 setup.py install_lib
 RUN python3 setup.py install_data
 RUN python3 setup.py install_egg_info
-RUN rm -rf /gen_mqtt_servce/
+RUN rm -rf /gen_mqtt_service/
 RUN rm -f setup.py
 RUN rm -f README.md

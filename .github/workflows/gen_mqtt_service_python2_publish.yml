@@ -1,4 +1,4 @@
-name: Install Python2 Package gen_mqtt_servce
+name: Install Python2 Package gen_mqtt_service
 on:
   push:
     branches: [ master ]
