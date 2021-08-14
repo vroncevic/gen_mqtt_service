@@ -30,6 +30,10 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
+Used next development environment
+
+![Development environment](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/debtux.png)
+
 ![Install Python2 Package](https://github.com/vroncevic/gen_mqtt_service/workflows/Install%20Python2%20Package%20gen_mqtt_service/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_mqtt_service/workflows/Install%20Python3%20Package%20gen_mqtt_service/badge.svg?branch=master)
 
 Currently there are three ways to install tool:
@@ -103,6 +107,7 @@ Generator structure:
 
 More documentation and info at:
 * [gen_mqtt_service.readthedocs.io](https://gen_mqtt_service.readthedocs.io/en/latest/)
+* [MQTT Service](overview.md)
 * [www.python.org](https://www.python.org/)
 
 ### Copyright and Licence
