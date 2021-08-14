@@ -1,0 +1,80 @@
+# -*- coding: UTF-8 -*-
+
+'''
+ Module
+     subscriber.py
+ Copyright
+     Copyright (C) ${YEAR} Vladimir Roncevic <elektron.ronca@gmail.com>
+     ${PRO} is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     ${PRO} is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Defined MQTT Subscriber with attribute(s) and function(s).
+'''
+
+import sys
+import random
+
+try:
+    from paho.mqtt import client as mqtt_client
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
+
+__author__ = 'Vladimir Roncevic'
+__copyright__ = 'Copyright ${YEAR}, https://vroncevic.github.io/${PRO}'
+__credits__ = ['Vladimir Roncevic']
+__license__ = 'https://github.com/vroncevic/${PRO}/blob/dev/LICENSE'
+__version__ = '1.0.0'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
+
+broker = 'broker.emqx.io'
+port = 1883
+topic = 'python/mqtt'
+client_id = '89'
+username = 'emqx'
+password = 'public'
+
+
+def connect_mqtt() -> mqtt_client:
+    def on_connect(client, userdata, flags, rc):
+        if rc == 0:
+            print('Connected to MQTT Broker!')
+        else:
+            print('Failed to connect, return code %d\n', rc)
+    client = mqtt_client.Client(client_id)
+    client.username_pw_set(username, password)
+    client.on_connect = on_connect
+    client.connect(broker, port)
+    return client
+
+
+def subscribe(client: mqtt_client):
+    def on_message(client, userdata, msg):
+        print(
+            'Received {0} from {1} topic'.format(
+                msg.payload.decode(), msg.topic
+            )
+        )
+    client.subscribe(topic)
+    client.on_message = on_message
+
+
+def run():
+    client = connect_mqtt()
+    subscribe(client)
+    client.loop_forever()
+
+
+if __name__ == '__main__':
+    run()
+
