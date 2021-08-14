@@ -98,7 +98,34 @@ Base flow of generation process:
 Generator structure:
 
 ```
-
+gen_mqtt_service/
+├── conf/
+│   ├── gen_mqtt_service.cfg
+│   ├── gen_mqtt_service_util.cfg
+│   ├── project.yaml
+│   └── template/
+│       ├── mosquitto/
+│       │   ├── publisher.template
+│       │   └── subscriber.template
+│       ├── paho/
+│       │   ├── publisher.template
+│       │   └── subscriber.template
+│       ├── template_mosquitto.yaml
+│       └── template_paho.yaml
+├── __init__.py
+├── log/
+│   └── gen_mqtt_service.log
+├── pro/
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── pro_name.py
+│   │   ├── pro_selector.py
+│   │   └── pro_type.py
+│   ├── __init__.py
+│   ├── read_template.py
+│   └── write_template.py
+└── run/
+    └── gen_mqtt_service_run.py
 ```
 
 ### Docs

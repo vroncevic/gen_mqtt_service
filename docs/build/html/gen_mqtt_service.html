@@ -1,0 +1,243 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gen_mqtt_service package &#8212; gen_mqtt_service https://github.com/vroncevic/gen_mqtt_service/releases/ documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="gen_mqtt_service.pro package" href="gen_mqtt_service.pro.html" />
+    <link rel="prev" title="gen_mqtt_service" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gen-mqtt-service-package">
+<h1>gen_mqtt_service package<a class="headerlink" href="#gen-mqtt-service-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gen_mqtt_service.pro.html">gen_mqtt_service.pro package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gen_mqtt_service.pro.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gen_mqtt_service.pro.config.html">gen_mqtt_service.pro.config package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gen_mqtt_service.pro.config.html#submodules">Submodules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="gen_mqtt_service.pro.config.pro_name.html">gen_mqtt_service.pro.config.pro_name module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gen_mqtt_service.pro.config.pro_selector.html">gen_mqtt_service.pro.config.pro_selector module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="gen_mqtt_service.pro.config.pro_type.html">gen_mqtt_service.pro.config.pro_type module</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="gen_mqtt_service.pro.config.html#module-gen_mqtt_service.pro.config">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gen_mqtt_service.pro.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gen_mqtt_service.pro.read_template.html">gen_mqtt_service.pro.read_template module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gen_mqtt_service.pro.write_template.html">gen_mqtt_service.pro.write_template module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gen_mqtt_service.pro.html#module-gen_mqtt_service.pro">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="module-gen_mqtt_service">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gen_mqtt_service" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>__init__.py</dd>
+<dt>Copyright</dt>
+<dd>Copyright (C) 2021 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
+gen_mqtt_service is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+gen_mqtt_service is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along
+with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
+<dt>Info</dt>
+<dd>Defined class GenMQTTService with attribute(s) and method(s).
+Load a base info, create an CLI interface and run operation(s).</dd>
+</dl>
+<dl class="class">
+<dt id="gen_mqtt_service.GenMQTTService">
+<em class="property">class </em><code class="descclassname">gen_mqtt_service.</code><code class="descname">GenMQTTService</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_mqtt_service.html#GenMQTTService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_mqtt_service.GenMQTTService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.cli.cfg_cli.CfgCLI</span></code></p>
+<p>Defined class GenMQTTService with attribute(s) and method(s).
+Load a base info, create an CLI interface and run operation(s).
+It defines:</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">CONFIG - tool info file path.</div>
+<div class="line">LOG - tool log file path.</div>
+<div class="line">OPS - list of tool options.</div>
+<div class="line">logger - logger object API.</div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">process - process and run operation.</div>
+<div class="line">__str__ - dunder method for GenMQTTService.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="attribute">
+<dt id="gen_mqtt_service.GenMQTTService.CONFIG">
+<code class="descname">CONFIG</code><em class="property"> = '/conf/gen_mqtt_service.cfg'</em><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_mqtt_service.GenMQTTService.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_MQTT_SERVICE'</em><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_mqtt_service.GenMQTTService.LOG">
+<code class="descname">LOG</code><em class="property"> = '/log/gen_mqtt_service.log'</em><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.LOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_mqtt_service.GenMQTTService.OPS">
+<code class="descname">OPS</code><em class="property"> = ['-g', '--gen', '-v', '--verbose', '--version']</em><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.OPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_mqtt_service.GenMQTTService.VERBOSE">
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="gen_mqtt_service.GenMQTTService.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_mqtt_service.html#GenMQTTService.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_mqtt_service.GenMQTTService.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process and run operation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean status, True (success) | False.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">gen_mqtt_service</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">gen_mqtt_service</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gen_mqtt_service package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="gen_mqtt_service.pro.html">gen_mqtt_service.pro package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-gen_mqtt_service">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Generator for MQTT Service</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">gen_mqtt_service</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">gen_mqtt_service</a></li>
+      <li>Next: <a href="gen_mqtt_service.pro.html" title="next chapter">gen_mqtt_service.pro package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Vladimir Roncevic <elektron.ronca@gmail.com>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/gen_mqtt_service.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
