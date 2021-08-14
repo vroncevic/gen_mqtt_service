@@ -130,7 +130,7 @@ gen_mqtt_service/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen_mqtt_service/badge/?version=latest)](https://gen_mqtt_service.readthedocs.io/projects/gen_mqtt_service/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen-mqtt-service/badge/?version=latest)](https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at:
 * [gen_mqtt_service.readthedocs.io](https://gen-mqtt-servce.readthedocs.io/en/latest)
