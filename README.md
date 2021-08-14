@@ -133,7 +133,7 @@ gen_mqtt_service/
 [![Documentation Status](https://readthedocs.org/projects/gen_mqtt_service/badge/?version=latest)](https://gen_mqtt_service.readthedocs.io/projects/gen_mqtt_service/en/latest/?badge=latest)
 
 More documentation and info at:
-* [gen_mqtt_service.readthedocs.io](https://gen_mqtt_service.readthedocs.io/en/latest/)
+* [gen_mqtt_service.readthedocs.io](https://gen-mqtt-servce.readthedocs.io/en/latest)
 * [MQTT Service](overview.md)
 * [www.python.org](https://www.python.org/)
 
