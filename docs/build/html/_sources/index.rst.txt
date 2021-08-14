@@ -88,7 +88,7 @@ Generation flow of project setup
 
 Base flow of generation process:
 
-.. image:: https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docsgen_mqtt_service_flow.png
+.. image:: https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_flow.png
 
 Tool structure
 ---------------
