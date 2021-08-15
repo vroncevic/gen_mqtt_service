@@ -16,11 +16,10 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Defined MQTT Publisher with attribute(s) and function(s).
+     Defined MQTT publisher with attribute(s) and function(s).
 '''
 
 import sys
-import random
 import time
 
 try:
@@ -42,43 +41,75 @@ broker = 'broker.emqx.io'
 port = 1883
 topic = 'python/mqtt'
 client_id = '789'
-username = 'emqx'
-password = 'public'
+username = 'vroncevic'
+password = 'mypassword'
 
 
-def connect_mqtt():
+def connect_mqtt(verbose=False) -> mqtt_client:
+    '''
+        Connect MQTT Client to broker.
+
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :return: MQTT Client object
+        :rtype: <Client>
+        :exceptions: None
+    '''
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
-            print('Connected to MQTT Broker!')
+            print('Connected to MQTT broker!\n')
         else:
-            print('Failed to connect, return code %d\n', rc)
+            print('Failed to connect, return code {0}!\n'.format(rc))
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
     client.on_connect = on_connect
     client.connect(broker, port)
+    if verbose:
+        print(
+            'Connect client-id: {0} to broker {1} at port {2}\n'.format(
+                client_id, broker, port
+            )
+        )
     return client
 
 
-def publish(client):
+def publish_mqtt(client: mqtt_client, verbose=False):
+    '''
+        Publish topic message.
+
+        :param client: MQTT client object.
+        :type client: <Client>
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :exceptions: None
+    '''
     msg_count = 0
     while True:
         time.sleep(1)
+        if verbose:
+            print('\nNew publish from client-id {0}\n'.format(client_id))
         msg = 'messages: {0}'.format(msg_count)
         result = client.publish(topic, msg)
         status = result[0]
         if status == 0:
-            print('Send {0} to topic {1}'.format(msg, topic))
+            print('Send {0} to topic {1}\n'.format(msg, topic))
         else:
-            print('Failed to send message to topic {}'.format(topic))
+            print('Failed to send message to topic {0}\n'.format(topic))
         msg_count += 1
 
 
-def run():
-    client = connect_mqtt()
+def run_mqtt(verbose=False):
+    '''
+        Run publisher in MQTT service.
+
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :exceptions: None
+    '''
+    client = connect_mqtt(verbose=verbose)
     client.loop_start()
-    publish(client)
+    publish_mqtt(client, verbose=verbose)
 
 
 if __name__ == '__main__':
-    run()
-
+    run_mqtt(verbose=False)
