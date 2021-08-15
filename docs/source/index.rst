@@ -93,7 +93,7 @@ Base flow of generation process:
 Tool structure
 ---------------
 
-**gen_mqtt_service** is based on Template mechanism:
+**gen_mqtt_service** is based on OOP.
 
 Code structure:
 
