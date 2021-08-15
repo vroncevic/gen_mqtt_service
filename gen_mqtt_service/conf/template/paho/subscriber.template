@@ -16,11 +16,10 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Defined MQTT Subscriber with attribute(s) and function(s).
+     Defined MQTT subscriber with attribute(s) and function(s).
 '''
 
 import sys
-import random
 
 try:
     from paho.mqtt import client as mqtt_client
@@ -41,40 +40,76 @@ broker = 'broker.emqx.io'
 port = 1883
 topic = 'python/mqtt'
 client_id = '89'
-username = 'emqx'
-password = 'public'
+username = 'vroncevic'
+password = 'mypassword'
 
 
-def connect_mqtt() -> mqtt_client:
+def connect_mqtt(verbose=False) -> mqtt_client:
+    '''
+        Connect MQTT Client to broker.
+
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :return: MQTT Client object
+        :rtype: <Client>
+        :exceptions: None
+    '''
     def on_connect(client, userdata, flags, rc):
         if rc == 0:
-            print('Connected to MQTT Broker!')
+            print('Connected to MQTT broker!\n')
         else:
-            print('Failed to connect, return code %d\n', rc)
+            print('Failed to connect, return code {0}!\n'.format(rc))
     client = mqtt_client.Client(client_id)
     client.username_pw_set(username, password)
     client.on_connect = on_connect
     client.connect(broker, port)
+    if verbose:
+        print(
+            'Connect client-id: {0} to broker {1} at port {2}\n'.format(
+                client_id, broker, port
+            )
+        )
     return client
 
 
-def subscribe(client: mqtt_client):
+def subscribe_mqtt(client: mqtt_client, verbose=False):
+    '''
+        Subscribe client to a topic.
+
+        :param client: MQTT Client object.
+        :type client: <Client>
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :exceptions: None
+    '''
     def on_message(client, userdata, msg):
         print(
-            'Received {0} from {1} topic'.format(
+            'Received {0} from {1} topic\n'.format(
                 msg.payload.decode(), msg.topic
             )
         )
     client.subscribe(topic)
     client.on_message = on_message
+    if verbose:
+        print(
+            'Subscribe client-id: {0} for topic {1}\n'.format(
+                client_id, topic
+            )
+        )
 
 
-def run():
-    client = connect_mqtt()
-    subscribe(client)
+def run_mqtt(verbose=False):
+    '''
+        Run subscriber in MQTT service.
+
+        :param verbose: enable/disable verbose option.
+        :type verbose: <bool>
+        :exceptions: None
+    '''
+    client = connect_mqtt(verbose=verbose)
+    subscribe_mqtt(client)
     client.loop_forever()
 
 
 if __name__ == '__main__':
-    run()
-
+    run_mqtt(verbose=False)
