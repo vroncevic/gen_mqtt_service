@@ -1,5 +1,22 @@
 # The MQTT protocol
 
+MQTT is a publish/subscribe messaging protocol designed for lightweight M2M
+communications. It was originally developed by IBM and is now an open standard.
+
+### Architecture
+
+MQTT has a client/server model, where every sensor is a client and connects
+to a server, known as a broker, over TCP.
+
+MQTT is message oriented. Every message is a discrete chunk of data, opaque
+to the broker.
+
+Every message is published to an address, known as a topic. Clients may
+subscribe to multiple topics. Every client subscribed to a topic receives
+every message published to the topic.
+
+### Network entities
+
 MQTT defines two types of network entities:
 - message [broker](mqtt_broker.md), and
 - number of clients
@@ -54,4 +71,8 @@ modification or forgery.
 The default unencrypted MQTT port is 1883. The encrypted port is 8883.
 
 [Protocol support](mqtt_v5.md) more details.
+
+### Example
+
+[MQTT service for temperature](example.md).
 
