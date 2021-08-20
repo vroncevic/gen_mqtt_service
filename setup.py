@@ -125,10 +125,16 @@ setup(
             'conf/project.yaml',
             'conf/template/template_mosquitto.yaml',
             'conf/template/template_paho.yaml',
+            'conf/template/template_mqtt_node.yaml',
+            'conf/template/template_mqtt_node_ws.yaml',
             'conf/template/mosquitto/publisher.template'
             'conf/template/mosquitto/subscriber.template'
             'conf/template/paho/publisher.template'
             'conf/template/paho/subscriber.template'
+            'conf/template/mqtt_node/publisher.template',
+            'conf/template/mqtt_node/subscriber.template',
+            'conf/template/mqtt_node_ws/client.template',
+            'conf/template/mqtt_node_ws/server.template',
             'log/gen_mqtt_service.log'
         ]
     },

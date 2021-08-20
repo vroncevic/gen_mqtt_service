@@ -1,6 +1,6 @@
 <img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_logo.png" width="25%">
 
-# Generate MQTT
+# Generate MQTT Service
 
 **gen_mqtt_service** is tool for generation of MQTT modules.
 
