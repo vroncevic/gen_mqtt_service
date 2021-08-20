@@ -2,7 +2,7 @@
 
 # Generate MQTT Service
 
-**gen_mqtt_service** is tool for generation of MQTT modules.
+**gen_mqtt_service** is toolset for generation of MQTT service.
 
 Developed in **[python](https://www.python.org/)** code: **100%**.
 
@@ -57,7 +57,7 @@ pip3 install gen-mqtt-service
 
 Navigate to release **[page](https://github.com/vroncevic/gen_mqtt_service/releases/)** download and extract release archive.
 
-To install modules, locate and run setup.py with arguments
+To install **gen_mqtt_service** type the following:
 ```
 tar xvzf gen_mqtt_service-x.y.z.tar.gz
 cd gen_mqtt_service-x.y.z/
@@ -85,11 +85,11 @@ You can use docker to create image/container.
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
-### Generation flow of py module
+### Generation flow of MQTT service
 
 Base flow of generation process:
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_flow.png)
+![MQTT generation flow](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_flow.png)
 
 ### Tool structure
 
@@ -107,10 +107,18 @@ gen_mqtt_service/
 │       ├── mosquitto/
 │       │   ├── publisher.template
 │       │   └── subscriber.template
+│       ├── mqtt_node/
+│       │   ├── publisher.template
+│       │   └── subscriber.template
+│       ├── mqtt_node_ws/
+│       │   ├── client.template
+│       │   └── server.template
 │       ├── paho/
 │       │   ├── publisher.template
 │       │   └── subscriber.template
 │       ├── template_mosquitto.yaml
+│       ├── template_mqtt_node_ws.yaml
+│       ├── template_mqtt_node.yaml
 │       └── template_paho.yaml
 ├── __init__.py
 ├── log/

@@ -1,7 +1,7 @@
-Generator for MQTT Service
---------------------------
+Generate MQTT Service
+----------------------
 
-**gen_mqtt_service** is toolset for generating MQTT service.
+**gen_mqtt_service** is toolset for generation MQTT service.
 
 Developed in `python <https://www.python.org/>`_ code: **100%**.
 
@@ -83,7 +83,7 @@ Dependencies
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
-Generation flow of project setup
+Generation flow of MQTT service
 ---------------------------------
 
 Base flow of generation process:
@@ -108,10 +108,18 @@ Code structure:
     │       ├── mosquitto/
     │       │   ├── publisher.template
     │       │   └── subscriber.template
+    │       ├── mqtt_node/
+    │       │   ├── publisher.template
+    │       │   └── subscriber.template
+    │       ├── mqtt_node_ws/
+    │       │   ├── client.template
+    │       │   └── server.template
     │       ├── paho/
     │       │   ├── publisher.template
     │       │   └── subscriber.template
     │       ├── template_mosquitto.yaml
+    │       ├── template_mqtt_node_ws.yaml
+    │       ├── template_mqtt_node.yaml
     │       └── template_paho.yaml
     ├── __init__.py
     ├── log/

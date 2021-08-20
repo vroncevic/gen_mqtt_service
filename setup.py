@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      setup.py
  Copyright
@@ -17,8 +17,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define setup for tool gen_mqtt_service.
-"""
+     Defined setup for tool gen_mqtt_service.
+'''
 
 from __future__ import print_function
 import sys
