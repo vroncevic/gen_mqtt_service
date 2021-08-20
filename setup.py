@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-"""
+'''
  Module
      setup.py
  Copyright
@@ -17,8 +17,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define setup for tool gen_mqtt_service.
-"""
+     Defined setup for tool gen_mqtt_service.
+'''
 
 from __future__ import print_function
 import sys
@@ -125,10 +125,16 @@ setup(
             'conf/project.yaml',
             'conf/template/template_mosquitto.yaml',
             'conf/template/template_paho.yaml',
+            'conf/template/template_mqtt_node.yaml',
+            'conf/template/template_mqtt_node_ws.yaml',
             'conf/template/mosquitto/publisher.template'
             'conf/template/mosquitto/subscriber.template'
             'conf/template/paho/publisher.template'
             'conf/template/paho/subscriber.template'
+            'conf/template/mqtt_node/publisher.template',
+            'conf/template/mqtt_node/subscriber.template',
+            'conf/template/mqtt_node_ws/client.template',
+            'conf/template/mqtt_node_ws/server.template',
             'log/gen_mqtt_service.log'
         ]
     },
