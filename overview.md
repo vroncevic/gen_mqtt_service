@@ -70,6 +70,8 @@ modification or forgery.
 
 The default unencrypted MQTT port is 1883. The encrypted port is 8883.
 
+![Abstract layering of MQTT](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/abstract_layering_of_mqtt.png)
+
 [Protocol support](mqtt_v5.md) more details.
 
 ### Example
