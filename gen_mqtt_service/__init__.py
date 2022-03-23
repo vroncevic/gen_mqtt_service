@@ -4,7 +4,7 @@
  Module
      __init__.py
  Copyright
-     Copyright (C) 2021 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_mqtt_service is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -21,12 +21,12 @@
 '''
 
 import sys
-from os.path import exists
+from os.path import exists, dirname, realpath
 
 try:
     from six import add_metaclass
-    from pathlib import Path
     from gen_mqtt_service.pro import MQTTService
+    from ats_utilities.splash import Splash
     from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
     from ats_utilities.cooperative import CooperativeMeta
@@ -38,7 +38,7 @@ except ImportError as ats_error_message:
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2021, https://github.com/vroncevic/gen_mqtt_service'
+__copyright__ = 'Copyright 2020, https://github.com/vroncevic/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
 __version__ = '1.0.1'
@@ -58,6 +58,7 @@ class GenMQTTService(CfgCLI):
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - tool info file path.
                 | LOG - tool log file path.
+                | LOGO - logo for splash screen.
                 | OPS - list of tool options.
                 | logger - logger object API.
             :methods:
@@ -69,6 +70,7 @@ class GenMQTTService(CfgCLI):
     GEN_VERBOSE = 'GEN_MQTT_SERVICE'
     CONFIG = '/conf/gen_mqtt_service.cfg'
     LOG = '/log/gen_mqtt_service.log'
+    LOGO = '/conf/gen_mqtt_service.logo'
     OPS = ['-g', '--gen', '-v', '--verbose', '--version']
 
     def __init__(self, verbose=False):
@@ -79,7 +81,15 @@ class GenMQTTService(CfgCLI):
             :type verbose: <bool>
             :exceptions: None
         '''
-        current_dir = Path(__file__).resolve().parent
+        current_dir = dirname(realpath(__file__))
+        gen_mqtt_service_property = {
+            'ats_organization': 'vroncevic',
+            'ats_repository': 'gen_mqtt_service',
+            'ats_name': 'gen_mqtt_service',
+            'ats_logo_path': '{0}{1}'.format(current_dir, GenMQTTService.LOGO),
+            'ats_use_github_infrastructure': True
+        }
+        splash = Splash(gen_mqtt_service_property, verbose=verbose)
         base_info = '{0}{1}'.format(current_dir, GenMQTTService.CONFIG)
         CfgCLI.__init__(self, base_info, verbose=verbose)
         verbose_message(GenMQTTService.GEN_VERBOSE, verbose, 'init tool info')
