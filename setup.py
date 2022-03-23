@@ -120,6 +120,7 @@ setup(
     install_requires=['ats-utilities'],
     package_data={
         'gen_mqtt_service': [
+            'conf/gen_mqtt_service.logo',
             'conf/gen_mqtt_service.cfg',
             'conf/gen_mqtt_service_util.cfg',
             'conf/project.yaml',

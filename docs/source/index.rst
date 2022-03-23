@@ -25,7 +25,7 @@ other information that should be provided before the tool is installed.
 
 .. toctree::
    :maxdepth: 4
-   :caption: Contents:
+   :caption: Contents
 
    modules
    self
@@ -45,7 +45,7 @@ Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_mqtt_service/releases
 
-To install **gen_mqtt_service** type the following:
+To install **gen_mqtt_service** type the following
 
 .. code-block:: bash
 
@@ -62,7 +62,7 @@ To install **gen_mqtt_service** type the following:
     python3 setup.py install_data
     python3 setup.py install_egg_info
 
-You can use Docker to create image/container, or You can use pip to install:
+You can use Docker to create image/container, or You can use pip to install
 
 .. code-block:: bash
 
@@ -79,14 +79,14 @@ You can use Docker to create image/container, or You can use pip to install:
 Dependencies
 -------------
 
-**gen_mqtt_service** requires next modules and libraries:
+**gen_mqtt_service** requires next modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
 Generation flow of MQTT service
 ---------------------------------
 
-Base flow of generation process:
+Base flow of generation process
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_flow.png
 
@@ -95,12 +95,13 @@ Tool structure
 
 **gen_mqtt_service** is based on OOP.
 
-Code structure:
+Code structure
 
 .. code-block:: bash
 
     gen_mqtt_service/
     ├── conf/
+    │   ├── gen_mqtt_service.logo
     │   ├── gen_mqtt_service.cfg
     │   ├── gen_mqtt_service_util.cfg
     │   ├── project.yaml

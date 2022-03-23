@@ -36,7 +36,7 @@ Used next development environment
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_mqtt_service/workflows/Install%20Python2%20Package%20gen_mqtt_service/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_mqtt_service/workflows/Install%20Python3%20Package%20gen_mqtt_service/badge.svg?branch=master)
 
-Currently there are three ways to install tool:
+Currently there are three ways to install tool
 * Install process based on pip
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
@@ -57,7 +57,7 @@ pip3 install gen-mqtt-service
 
 Navigate to release **[page](https://github.com/vroncevic/gen_mqtt_service/releases/)** download and extract release archive.
 
-To install **gen_mqtt_service** type the following:
+To install **gen_mqtt_service** type the following
 ```
 tar xvzf gen_mqtt_service-x.y.z.tar.gz
 cd gen_mqtt_service-x.y.z/
@@ -81,13 +81,13 @@ You can use docker to create image/container.
 
 ### Dependencies
 
-**gen_mqtt_service** requires next modules and libraries:
+**gen_mqtt_service** requires next modules and libraries
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 
 ### Generation flow of MQTT service
 
-Base flow of generation process:
+Base flow of generation process
 
 ![MQTT generation flow](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_flow.png)
 
@@ -95,11 +95,12 @@ Base flow of generation process:
 
 **gen_mqtt_service** is based on OOP.
 
-Generator structure:
+Generator structure
 
 ```
 gen_mqtt_service/
 ├── conf/
+│   ├── gen_mqtt_service.logo
 │   ├── gen_mqtt_service.cfg
 │   ├── gen_mqtt_service_util.cfg
 │   ├── project.yaml
@@ -140,7 +141,7 @@ gen_mqtt_service/
 
 [![Documentation Status](https://readthedocs.org/projects/gen-mqtt-service/badge/?version=latest)](https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [gen-mqtt-service.readthedocs.io](https://gen-mqtt-service.readthedocs.io/en/latest)
 * [MQTT Service](overview.md)
 * [www.python.org](https://www.python.org/)
