@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.0.1'
+__version__ = '1.1.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -63,7 +63,7 @@ APPROVED_LICENSES: List[str] = [
 PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 setup(
     name='gen_mqtt_service',
-    version='1.0.1',
+    version='1.1.1',
     description='Generating MQTT modules',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -82,18 +82,14 @@ setup(
             f'{CONF}/gen_mqtt_service.cfg',
             f'{CONF}/gen_mqtt_service_util.cfg',
             f'{CONF}/project.yaml',
-            f'{TEMPLATE}/template_mosquitto.yaml',
-            f'{TEMPLATE}/template_paho.yaml',
-            f'{TEMPLATE}/template_mqtt_node.yaml',
-            f'{TEMPLATE}/template_mqtt_node_ws.yaml',
-            f'{TEMPLATE}/mosquitto/publisher.template'
-            f'{TEMPLATE}/mosquitto/subscriber.template'
-            f'{TEMPLATE}/paho/publisher.template'
-            f'{TEMPLATE}/paho/subscriber.template'
-            f'{TEMPLATE}/mqtt_node/publisher.template',
-            f'{TEMPLATE}/mqtt_node/subscriber.template',
-            f'{TEMPLATE}/mqtt_node_ws/client.template',
-            f'{TEMPLATE}/mqtt_node_ws/server.template',
+            f'{TEMPLATE}/mosquitto/publisher.template',
+            f'{TEMPLATE}/mosquitto/subscriber.template',
+            f'{TEMPLATE}/node/publisher.template',
+            f'{TEMPLATE}/node/subscriber.template',
+            f'{TEMPLATE}/node_ws/client.template',
+            f'{TEMPLATE}/node_ws/server.template',
+            f'{TEMPLATE}/paho/publisher.template',
+            f'{TEMPLATE}/paho/subscriber.template',
             f'{LOG}/gen_mqtt_service.log'
         ]
     },
