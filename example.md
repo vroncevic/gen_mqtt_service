@@ -14,4 +14,3 @@ The broker forwards the message to all subscribed clients.
 
 The publisher subscriber model allows MQTT clients to communicate one-to-one,
 one-to-many and many-to-one.
-

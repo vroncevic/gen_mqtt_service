@@ -77,4 +77,3 @@ The default unencrypted MQTT port is 1883. The encrypted port is 8883.
 ### Example
 
 [MQTT service for temperature](example.md).
-

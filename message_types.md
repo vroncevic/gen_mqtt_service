@@ -16,4 +16,3 @@ session to disconnect.
 
 Returns immediately to the application thread after passing the request to
 the MQTT client.
-

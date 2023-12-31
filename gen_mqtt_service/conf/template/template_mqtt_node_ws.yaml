@@ -1,6 +1,0 @@
-templates:
- - mqtt_node_ws/server.template
- - mqtt_node_ws/client.template
-modules:
- - server.js
- - client.js

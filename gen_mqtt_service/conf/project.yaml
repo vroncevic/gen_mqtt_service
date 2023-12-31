@@ -1,12 +1,27 @@
-types:
-    - mosquitto
-    - paho
-    - mqtt_node
-    - mqtt_node_ws
-    - cancel
 templates:
-    - template_mosquitto.yaml
-    - template_paho.yaml
-    - template_mqtt_node.yaml
-    - template_mqtt_node_ws.yaml
-    - cancel
+  - mosquitto:
+    - publisher.template
+    - subscriber.template
+  - node:
+    - publisher.template
+    - subscriber.template
+  - node_ws:
+    - server.template
+    - client.template
+  - paho:
+    - publisher.template
+    - subscriber.template
+
+modules:
+  - mosquitto:
+    - publisher.c
+    - subscriber.c
+  - node:
+    - publisher.js
+    - subscriber.js
+  - node_ws:
+    - server.js
+    - client.js
+  - paho:
+    - publisher.py
+    - subscriber.py
