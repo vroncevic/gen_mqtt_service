@@ -16,4 +16,3 @@ Version 5.0 includes the following major new features:
 - shared subscriptions: allow the load to be balanced across clients and thus reduce the risk of load problems
 - message expiry: messages can include an expiry date and are deleted if they are not delivered within this time period
 - topic alias: the name of a topic can be replaced with a single number
-

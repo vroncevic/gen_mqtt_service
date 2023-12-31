@@ -1,6 +1,0 @@
-templates:
- - paho/publisher.template
- - paho/subscriber.template
-modules:
- - publisher.py
- - subscriber.py

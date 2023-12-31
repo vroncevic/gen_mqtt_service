@@ -1,35 +1,36 @@
 # -*- coding: UTF-8 -*-
 
 '''
- Module
-     subscriber.py
- Copyright
-     Copyright (C) ${YEAR} Vladimir Roncevic <elektron.ronca@gmail.com>
-     ${PRO} is free software: you can redistribute it and/or modify it
-     under the terms of the GNU General Public License as published by the
-     Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     ${PRO} is distributed in the hope that it will be useful, but
-     WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-     See the GNU General Public License for more details.
-     You should have received a copy of the GNU General Public License along
-     with this program. If not, see <http://www.gnu.org/licenses/>.
- Info
-     Defined MQTT subscriber with attribute(s) and function(s).
+Module
+    subscriber.py
+Copyright
+    Copyright (C) ${YEAR} Vladimir Roncevic <elektron.ronca@gmail.com>
+    ${PRO} is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    ${PRO} is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Info
+    Defines MQTT subscriber with attribute(s) and function(s).
 '''
 
 import sys
+from typing import List
 
 try:
     from paho.mqtt import client as mqtt_client
 except ImportError as ats_error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
-    sys.exit(MESSAGE)  # Force close python ATS ##############################
+    # Force close python ATS ##################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright ${YEAR}, https://vroncevic.github.io/${PRO}'
-__credits__ = ['Vladimir Roncevic']
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/${PRO}/blob/dev/LICENSE'
 __version__ = '1.0.0'
 __maintainer__ = 'Vladimir Roncevic'
@@ -46,9 +47,9 @@ password = 'mypassword'
 
 def connect_mqtt(verbose=False) -> mqtt_client:
     '''
-        Connect MQTT Client to broker.
+        Connects MQTT Client to broker.
 
-        :param verbose: enable/disable verbose option.
+        :param verbose: Enable/Disable verbose option
         :type verbose: <bool>
         :return: MQTT Client object
         :rtype: <Client>
@@ -74,11 +75,11 @@ def connect_mqtt(verbose=False) -> mqtt_client:
 
 def subscribe_mqtt(client: mqtt_client, verbose=False):
     '''
-        Subscribe client to a topic.
+        Subscribes client to a topic.
 
-        :param client: MQTT Client object.
+        :param client: MQTT Client object
         :type client: <Client>
-        :param verbose: enable/disable verbose option.
+        :param verbose: Enable/Disable verbose option
         :type verbose: <bool>
         :exceptions: None
     '''
@@ -100,9 +101,9 @@ def subscribe_mqtt(client: mqtt_client, verbose=False):
 
 def run_mqtt(verbose=False):
     '''
-        Run subscriber in MQTT service.
+        Runs subscriber in MQTT service.
 
-        :param verbose: enable/disable verbose option.
+        :param verbose: Enable/Disable verbose option
         :type verbose: <bool>
         :exceptions: None
     '''

@@ -4,7 +4,7 @@
  Module
      write_template.py
  Copyright
-     Copyright (C) 2020 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_mqtt_service is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or

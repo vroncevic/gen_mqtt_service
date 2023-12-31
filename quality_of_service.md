@@ -55,4 +55,3 @@ MQTT topic names are often long strings which make them impractical for 802.15.4
 
 Both of these shortcomings are addressed by the MQTT-SN protocol, which defines
 a UDP mapping of MQTT and adds broker support for indexing topic names.
-
