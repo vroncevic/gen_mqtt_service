@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -105,7 +105,7 @@ class WriteTemplate(FileCheck):
             raise ATSValueError('missing model name')
         all_stat: List[bool] = []
         num_of_modules: int = len(template_content)
-        module_pro_dir = f'{getcwd()}/{pro_name}/'
+        module_pro_dir: str = f'{getcwd()}/{pro_name}/'
         mkdir(module_pro_dir)
         for module_name, module_content in template_content.items():
             module_path: str = f'{module_pro_dir}{module_name}'
@@ -118,9 +118,7 @@ class WriteTemplate(FileCheck):
                 self.check_path(module_path, verbose)
                 self.check_mode('w', verbose)
                 if 'makefile'.capitalize() in module_path:
-                    self.check_format(
-                        module_path, 'makefile', verbose
-                    )
+                    self.check_format(module_path, 'makefile', verbose)
                 else:
                     self.check_format(
                         module_path, module_path.split('.')[1], verbose
