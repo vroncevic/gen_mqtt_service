@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2020, https://vroncevic.github.io/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -152,12 +152,12 @@ class MQTTService(FileCheck, ProConfig, ProName):
                 'generate', pro_type, 'form', pro_name
             ]
         )
-        template_content: Dict[str, str] | None = None
-        if bool(self._reader):
-            template_content = self._reader.read(
+        if bool(self._reader) and bool(self.config):
+            template_content: Dict[str, str] = self._reader.read(
                 self.config, pro_name, pro_type, verbose
             )
-        if all([bool(template_content), bool(self._writer)]):
-            if self._writer.write(template_content, pro_name, verbose):
-                status = True
+            if bool(template_content) and bool(self._writer):
+                status = self._writer.write(
+                    template_content, pro_name, verbose
+                )
         return status

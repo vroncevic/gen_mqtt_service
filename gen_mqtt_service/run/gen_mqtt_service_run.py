@@ -33,11 +33,11 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2021, https://github.com/vroncevic/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 if __name__ == '__main__':
-    TOOL = GenMQTTService(verbose=False)
+    TOOL: GenMQTTService = GenMQTTService(verbose=False)
     TOOL.process(verbose=False)

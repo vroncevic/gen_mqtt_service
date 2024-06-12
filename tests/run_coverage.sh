@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   gen_mqtt_service
-# @version v1.1.1
+# @version v1.1.2
 # @date    Sat Aug 1 07:52:38 2020
 # @company None, free software to use 2020
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>

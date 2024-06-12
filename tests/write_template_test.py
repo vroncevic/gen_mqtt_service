@@ -41,7 +41,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.1'
+__version__ = '1.1.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -90,7 +90,9 @@ class WriteTemplateTestCase(TestCase):
         '''Test write templates None'''
         template_write = WriteTemplate()
         with self.assertRaises(ATSTypeError):
-            self.assertFalse(template_write.write(None, 'none_simple'))
+            self.assertFalse(
+                template_write.write(None, 'none_simple')  # type: ignore
+            )
 
     def test_write_name_empty(self) -> None:
         '''Test write name empty'''

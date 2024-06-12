@@ -4,7 +4,7 @@
 Module
     subscriber.py
 Copyright
-    Copyright (C) 2023 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     latest_pro is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -29,7 +29,7 @@ except ImportError as ats_error_message:
     sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2023, https://vroncevic.github.io/latest_pro'
+__copyright__ = 'Copyright 2024, https://vroncevic.github.io/latest_pro'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/latest_pro/blob/dev/LICENSE'
 __version__ = '1.0.0'
