@@ -109,36 +109,46 @@ Generator structure
 
 ```bash
     gen_mqtt_service/
-        ├── conf/
-        │   ├── gen_mqtt_service.cfg
-        │   ├── gen_mqtt_service.logo
-        │   ├── gen_mqtt_service_util.cfg
-        │   ├── project.yaml
-        │   └── template/
-        │       ├── mosquitto/
-        │       │   ├── publisher.template
-        │       │   └── subscriber.template
-        │       ├── node/
-        │       │   ├── publisher.template
-        │       │   └── subscriber.template
-        │       ├── node_ws/
-        │       │   ├── client.template
-        │       │   └── server.template
-        │       └── paho/
-        │           ├── publisher.template
-        │           └── subscriber.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_mqtt_service.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        └── run/
-            └── gen_mqtt_service_run.py
-        
+            ├── conf/
+            │   ├── gen_mqtt_service.cfg
+            │   ├── gen_mqtt_service.logo
+            │   ├── gen_mqtt_service_util.cfg
+            │   ├── project.yaml
+            │   └── template/
+            │       ├── mosquitto/
+            │       │   ├── publisher.template
+            │       │   └── subscriber.template
+            │       ├── node/
+            │       │   ├── publisher.template
+            │       │   └── subscriber.template
+            │       ├── node_ws/
+            │       │   ├── client.template
+            │       │   └── server.template
+            │       └── paho/
+            │           ├── publisher.template
+            │           └── subscriber.template
+            ├── __init__.py
+            ├── log/
+            │   └── gen_mqtt_service.log
+            ├── pro/
+            │   ├── __init__.py
+            │   ├── read_template.py
+            │   └── write_template.py
+            └── run/
+                └── gen_mqtt_service_run.py
+
         10 directories, 18 files
 ```
+
+### Code coverage
+
+| Name | Stmts | Miss | Cover |
+|------|-------|------|-------|
+| `gen_mqtt_service/__init__.py` | 75 | 14 | 81% |
+| `gen_mqtt_service/pro/__init__.py` | 62 | 2 | 97% |
+| `gen_mqtt_service/pro/read_template.py` | 58 | 8 | 86% |
+| `gen_mqtt_service/pro/write_template.py` | 54 | 4 | 93% |
+| **Total** | 249 | 28 | 89% |
 
 ### Docs
 
