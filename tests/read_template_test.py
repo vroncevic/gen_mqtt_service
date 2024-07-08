@@ -23,7 +23,7 @@ Execute
 '''
 
 import sys
-from typing import List, Dict
+from typing import List, Dict, Optional
 from os.path import dirname, realpath
 from unittest import TestCase, main
 
@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_mqtt_service'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.2'
+__version__ = '1.1.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -99,7 +99,7 @@ class ReadTemplateTestCase(TestCase):
         current_dir: str = dirname(realpath(__file__))
         pro: str = '../gen_mqtt_service/conf/project.yaml'
         pro_structure: str = f'{current_dir}/{pro}'
-        yml2obj: Yaml2Object | None = Yaml2Object(pro_structure)
+        yml2obj: Optional[Yaml2Object] = Yaml2Object(pro_structure)
         self.assertTrue(bool(
             template_read.read(
                 yml2obj.read_configuration(), 'simple_read', 'paho'
