@@ -9,7 +9,7 @@ with the organization that standardized them:
 - MQTT v3.1.1, standardized by OASIS
 - MQTT v5.0, standardized by OASIS
 
-In 2019, OASIS released the official MQTT 5.0 standard.
+In 2026, OASIS released the official MQTT 5.0 standard.
 Version 5.0 includes the following major new features:
 
 - reason codes: acknowledgements now support return codes, which provide a reason for a failure

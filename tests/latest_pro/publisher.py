@@ -4,7 +4,7 @@
 Module
     publisher.py
 Copyright
-    Copyright (C) 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2025 Vladimir Roncevic <elektron.ronca@gmail.com>
     latest_pro is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -25,12 +25,12 @@ from typing import List
 
 try:
     from paho.mqtt import client as mqtt_client
-except ImportError as ats_error_message:
-    # Force close python ATS ##################################################
-    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
+except ImportError as ats_error_message:  # pragma: no cover
+    # Force exit python #######################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')  # pragma: no cover
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2024, https://vroncevic.github.io/latest_pro'
+__copyright__ = 'Copyright 2025, https://vroncevic.github.io/latest_pro'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/latest_pro/blob/dev/LICENSE'
 __version__ = '1.0.0'

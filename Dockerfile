@@ -1,4 +1,4 @@
-# Copyright 2020 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright 2020 - 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ COPY gen_mqtt_service /gen_mqtt_service/
 COPY setup.py /
 COPY README.md /
 COPY LICENSE /
-COPY setup.cfg /
 COPY MANIFEST.in /
 COPY pyproject.toml /
 RUN mkdir /tests/
@@ -56,7 +55,6 @@ RUN rm -rf /gen_mqtt_service*
 RUN rm -f setup.py
 RUN rm -f README.md
 RUN rm -f LICENSE
-RUN rm -f setup.cfg
 RUN rm -f MANIFEST.in
 RUN rm -f pyproject.toml
 RUN rm -rf /build/
