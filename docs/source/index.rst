@@ -9,7 +9,7 @@ The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-|gen_mqtt_service python checker| |gen_mqtt_service python package| |github issues| |documentation status| |github contributors|
+|gen_mqtt_service python checker| |gen_mqtt_service python package| |github issues| |github contributors|
 
 .. |gen_mqtt_service python checker| image:: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python_checker.yml
@@ -23,9 +23,6 @@ other information that should be provided before the tool is installed.
 .. |github contributors| image:: https://img.shields.io/github/contributors/vroncevic/gen_mqtt_service.svg
    :target: https://github.com/vroncevic/gen_mqtt_service/graphs/contributors
 
-.. |documentation status| image:: https://readthedocs.org/projects/gen-mqtt_service/badge/?version=latest
-   :target: https://gen-mqtt_service.readthedocs.io/en/latest/?badge=latest
-
 .. toctree::
    :maxdepth: 4
    :caption: Contents
@@ -36,10 +33,19 @@ other information that should be provided before the tool is installed.
 🚀 Installation
 ------------------
 
-|gen_mqtt_service python3 build|
+|gen_mqtt_service python3 build| |gen_mqtt_service interface checker| |gen_mqtt_service isp checker| |gen_mqtt_service srp checker|
 
 .. |gen_mqtt_service python3 build| image:: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python3_build.yml/badge.svg
    :target: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python3_build.yml
+
+.. |gen_mqtt_service interface checker| image:: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_interface_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_interface_checker.yml
+
+.. |gen_mqtt_service isp checker| image:: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_isp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_isp_checker.yml
+
+.. |gen_mqtt_service srp checker| image:: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_srp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_srp_checker.yml
 
 Navigate to release `page`_ download and extract release archive.
 
@@ -184,6 +190,11 @@ Running tool for creating new MqttService project skeleton
 📚 Docs
 ----------
 
+|documentation status|
+
+.. |documentation status| image:: https://readthedocs.org/projects/gen-mqtt_service/badge/?version=latest
+   :target: https://gen-mqtt_service.readthedocs.io/en/latest/?badge=latest
+
 More documentation and info at
 
 * `gen_mqtt_service.readthedocs.io <https://gen-mqtt_service.readthedocs.io>`_
@@ -197,6 +208,14 @@ More documentation and info at
 📄 Copyright and licence
 ---------------------------
 
+|license gpl v3| |license apache 2.0|
+
+.. |license gpl v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0
+
+.. |license apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
+   :target: https://opensource.org/licenses/Apache-2.0
+
 Copyright (C) 2025 - 2026 by `vroncevic.github.io/gen_mqtt_service <https://vroncevic.github.io/gen_mqtt_service>`_
 
 **gen_mqtt_service** is free software; you can redistribute it and/or modify
@@ -204,3 +223,13 @@ it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.
 
 Lets help and support PSF.
+
+|python software foundation|
+
+|donate|
+
+.. |python software foundation| image:: https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/psf-logo-alpha.png
+   :target: https://www.python.org/psf/
+
+.. |donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
+   :target: https://www.python.org/psf/donations/
