@@ -1,14 +1,14 @@
-# Generate MQTT Service
+# Create MqttService project skeleton
 
 <img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/gen_mqtt_service_logo.png" width="25%">
 
-**gen_mqtt_service** is toolset for generation of MQTT service.
+**gen_mqtt_service** is tool for creating MqttService project skeleton.
 
-Developed in **[python](https://www.python.org/)** code: **100%**.
+Developed in **[python](https://www.python.org/)** code.
 
-The README is used to introduce the modules and provide instructions on
-how to install the modules, any machine dependencies it may have and any
-other information that should be provided before the modules are installed.
+The README is used to introduce the tool and provide instructions on
+how to install the tool, any machine dependencies it may have and any
+other information that should be provided before the tool is installed.
 
 [![gen_mqtt_service python checker](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python_checker.yml) [![gen_mqtt_service package checker](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_mqtt_service.svg)](https://github.com/vroncevic/gen_mqtt_service/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_mqtt_service.svg)](https://github.com/vroncevic/gen_mqtt_service/graphs/contributors)
 
@@ -16,27 +16,31 @@ other information that should be provided before the modules are installed.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Installation](#installation)
+- [🚀 Installation](#-installation)
     - [Install using pip](#install-using-pip)
     - [Install using build](#install-using-build)
     - [Install using py setup](#install-using-py-setup)
     - [Install using docker](#install-using-docker)
-- [Dependencies](#dependencies)
-- [Tool structure](#tool-structure)
-- [Code coverage](#code-coverage)
-- [Docs](#docs)
-- [Contributing](#contributing)
-- [Copyright and licence](#copyright-and-licence)
+- [📦 Dependencies](#-dependencies)
+- [📁 Tool structure](#-tool-structure)
+  - [✨ Features](#-features)
+- [📊 Code coverage](#-code-coverage)
+- [🛠 Usage](#-usage)
+- [📚 Docs](#-docs)
+- [👥 Contributing](#-contributing)
+- [📄 Copyright and licence](#-copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### Installation
+### 🚀 Installation
+
+Used next development environment
 
 ![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/debtux.png)
 
 [![gen_mqtt_service python3 build](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python3_build.yml/badge.svg)](https://github.com/vroncevic/gen_mqtt_service/actions/workflows/gen_mqtt_service_python3_build.yml)
 
-Currently there are three ways to install package
+Currently there are four ways to install package
 * Install process based on using pip mechanism
 * Install process based on build mechanism
 * Install process based on setup.py mechanism
@@ -44,13 +48,13 @@ Currently there are three ways to install package
 
 ##### Install using pip
 
-Python package is located at **[pypi.org](https://pypi.org/project/gen-mqtt-service/)**.
+**gen_mqtt_service** is located at **[pypi.org](https://pypi.org/project/gen_mqtt_service/)**.
 
 You can install by using pip
 
 ```bash
 # python3
-pip3 install gen-mqtt-service
+pip3 install gen_mqtt_service
 ```
 
 ##### Install using build
@@ -65,6 +69,8 @@ cd gen_mqtt_service-x.y.z/
 # python3
 wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py 
+# python3
+python3 get-pip.py
 python3 -m pip install --upgrade setuptools
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
@@ -72,103 +78,200 @@ pip3 install -r requirements.txt
 python3 -m build --no-isolation --wheel
 pip3 install ./dist/gen_mqtt_service-*-py3-none-any.whl
 rm -f get-pip.py
-chmod 755 /usr/local/lib/python3.10/dist-packages/usr/local/bin/gen_mqtt_service_run.py
-ln -s /usr/local/lib/python3.10/dist-packages/usr/local/bin/gen_mqtt_service_run.py /usr/local/bin/gen_mqtt_service_run.py
 ```
 
 ##### Install using py setup
 
-Navigate to release **[page](https://github.com/vroncevic/gen_mqtt_service/releases/)** download and extract release archive.
+Navigate to **[release page](https://github.com/vroncevic/gen_mqtt_service/releases)** download and extract release archive.
 
-To install modules, locate and run setup.py with arguments
+To install **gen_mqtt_service** locate and run setup.py with arguments
 
 ```bash
 tar xvzf gen_mqtt_service-x.y.z.tar.gz
-cd gen_mqtt_service-x.y.z/
+cd gen_mqtt_service-x.y.z
 # python3
 pip3 install -r requirements.txt
 python3 setup.py install_lib
-python3 setup.py install_data
 python3 setup.py install_egg_info
 ```
 
 ##### Install using docker
 
-You can use docker to create image/container.
+You can use Dockerfile to create image/container.
 
-### Dependencies
+### 📦 Dependencies
 
 **gen_mqtt_service** requires next modules and libraries
 
-* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
+* [ats-utilities - Python App/Tool/Script Utilities](https://pypi.org/project/ats-utilities/)
 
-### Tool structure
+### 📁 Tool structure
 
 **gen_mqtt_service** is based on OOP.
 
-Generator structure
+Tool structure
+
+<details>
+<summary><b>Click to expand framework structure</b></summary>
 
 ```bash
     gen_mqtt_service/
-            ├── conf/
-            │   ├── gen_mqtt_service.cfg
-            │   ├── gen_mqtt_service.logo
-            │   ├── gen_mqtt_service_util.cfg
-            │   ├── project.yaml
-            │   └── template/
-            │       ├── mosquitto/
-            │       │   ├── publisher.template
-            │       │   └── subscriber.template
-            │       ├── node/
-            │       │   ├── publisher.template
-            │       │   └── subscriber.template
-            │       ├── node_ws/
-            │       │   ├── client.template
-            │       │   └── server.template
-            │       └── paho/
-            │           ├── publisher.template
-            │           └── subscriber.template
-            ├── __init__.py
-            ├── log/
-            │   └── gen_mqtt_service.log
-            ├── pro/
-            │   ├── __init__.py
-            │   ├── read_template.py
-            │   └── write_template.py
-            └── run/
-                └── gen_mqtt_service_run.py
+         ├── core/
+         │   ├── __init__.py
+         │   ├── model/
+         │   │   ├── __init__.py
+         │   │   └── project_setup.py
+         │   └── service/
+         │       ├── engine.py
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── infrastructure/
+         │   ├── cli/
+         │   │   ├── engine.py
+         │   │   ├── icli.py
+         │   │   ├── __init__.py
+         │   │   └── setup/
+         │   │       ├── bundle.py
+         │   │       ├── dep_validator.py
+         │   │       ├── dependencies.py
+         │   │       ├── factory.py
+         │   │       ├── __init__.py
+         │   │       ├── keys.py
+         │   │       ├── opt_validator.py
+         │   │       ├── options.py
+         │   │       ├── registry.py
+         │   │       └── validator.py
+         │   ├── command/
+         │   │   ├── command.py
+         │   │   ├── gen_mqtt_service_command_definition.py
+         │   │   ├── gen_mqtt_service_command_executor.py
+         │   │   ├── icommand_definition.py
+         │   │   ├── icommand_executor.py
+         │   │   └── __init__.py
+         │   ├── config/
+         │   │   ├── gen_mqtt_service.cfg
+         │   │   ├── gen_mqtt_service.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   └── subprocessor.py
+         ├── __init__.py
+         ├── py.typed
+         └── setup/
+             ├── bundle.py
+             ├── dep_validator.py
+             ├── dependencies.py
+             ├── factory.py
+             ├── __init__.py
+             ├── keys.py
+             ├── opt_validator.py
+             ├── options.py
+             ├── registry.py
+             └── validator.py
 
-        10 directories, 18 files
+     10 directories, 44 files
 ```
+</details>
 
-### Code coverage
+#### ✨ Features
+
+* Automatically scaffolds MqttService projects with build/make files.
+* Provides a modular and extensible architecture based on OOP and SOLID principles.
+* Includes command line interface (CLI) support via a command/executor structure.
+* Robust validation of project bundles, dependencies, and options.
+* Comes with configurable templates and JSON schema definitions.
+* High code quality with full type checking and 100% unit test coverage.
+
+### 📊 Code coverage
+
+<details>
+<summary><b>Click to expand code coverage</b></summary>
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_mqtt_service/__init__.py` | 73 | 12 | 84%|
-| `gen_mqtt_service/pro/__init__.py` | 60 | 0 | 100%|
-| `gen_mqtt_service/pro/read_template.py` | 56 | 6 | 89%|
-| `gen_mqtt_service/pro/write_template.py` | 52 | 2 | 96%|
-| **Total** | 241 | 20 | 92% |
+| `gen_mqtt_service/__init__.py` | 8 | 0 | 100%|
+| `gen_mqtt_service/core/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/core/model/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/core/model/project_setup.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/core/service/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/core/service/engine.py` | 27 | 0 | 100%|
+| `gen_mqtt_service/core/service/iservice.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/core/service/isubprocessor.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/engine.py` | 57 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/engine.py` | 39 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/icli.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/bundle.py` | 22 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/dep_validator.py` | 36 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/dependencies.py` | 18 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/factory.py` | 35 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/keys.py` | 26 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/opt_validator.py` | 36 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/options.py` | 15 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/registry.py` | 24 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/cli/setup/validator.py` | 43 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/command.py` | 16 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_definition.py` | 24 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_executor.py` | 21 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/subprocessor.py` | 55 | 0 | 100%|
+| `gen_mqtt_service/setup/__init__.py` | 9 | 0 | 100%|
+| `gen_mqtt_service/setup/bundle.py` | 23 | 0 | 100%|
+| `gen_mqtt_service/setup/dep_validator.py` | 36 | 0 | 100%|
+| `gen_mqtt_service/setup/dependencies.py` | 19 | 0 | 100%|
+| `gen_mqtt_service/setup/factory.py` | 48 | 0 | 100%|
+| `gen_mqtt_service/setup/keys.py` | 27 | 0 | 100%|
+| `gen_mqtt_service/setup/opt_validator.py` | 34 | 0 | 100%|
+| `gen_mqtt_service/setup/options.py` | 12 | 0 | 100%|
+| `gen_mqtt_service/setup/registry.py` | 32 | 0 | 100%|
+| `gen_mqtt_service/setup/validator.py` | 48 | 0 | 100%|
+| **Total** | 927 | 0 | 100% |
 
-### Docs
+</details>
 
-[![Documentation Status](https://readthedocs.org/projects/gen_mqtt_service/badge/?version=latest)](https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest)
+### 🛠 Usage
+
+Install package
+
+```bash
+pip3 install gen_mqtt_service
+```
+
+Prepare main entry point by downloading [main.py](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/main/main.py) or create your own.
+
+
+```bash
+wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/main/main.py
+```
+
+Running tool for creating new MqttService project skeleton
+
+```bash
+python3 main.py create --name mytool --type paho --output ./demo/
+```
+
+### 📚 Docs
+
+[![Documentation Status](https://readthedocs.org/projects/gen-mqtt_service/badge/?version=latest)](https://gen-mqtt_service.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at
 
-* [gen_mqtt_service.readthedocs.io](https://gen-mqtt-service.readthedocs.io)
+* [gen_mqtt_service.readthedocs.io](https://gen-mqtt_service.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
-### Contributing
+### 👥 Contributing
 
 [Contributing to gen_mqtt_service](CONTRIBUTING.md)
 
-### Copyright and Licence
+### 📄 Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2020 - 2026 by [vroncevic.github.io/gen_mqtt_service](https://vroncevic.github.io/gen_mqtt_service)
+Copyright (C) 2025 - 2026 by [vroncevic.github.io/gen_mqtt_service](https://vroncevic.github.io/gen_mqtt_service/)
 
 **gen_mqtt_service** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,

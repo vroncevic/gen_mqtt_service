@@ -7,7 +7,16 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   gen_mqtt_service.pro
+   gen_mqtt_service.core
+   gen_mqtt_service.setup
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gen_mqtt_service.engine
 
 Module contents
 ---------------

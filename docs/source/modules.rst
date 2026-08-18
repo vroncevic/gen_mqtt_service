@@ -5,4 +5,4 @@ gen_mqtt_service
    :maxdepth: 4
 
    gen_mqtt_service
-
+   main

@@ -1,0 +1,46 @@
+{
+    "mosquitto": {
+        "source_dir": "mosquitto",
+        "path_replacements": {
+            "dummy_nonexistent": "project_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "node": {
+        "source_dir": "node",
+        "path_replacements": {
+            "dummy_nonexistent": "project_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "node_ws": {
+        "source_dir": "node_ws",
+        "path_replacements": {
+            "dummy_nonexistent": "project_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "paho": {
+        "source_dir": "paho",
+        "path_replacements": {
+            "dummy_nonexistent": "project_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    }
+}
