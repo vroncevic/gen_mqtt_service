@@ -192,12 +192,12 @@ Running tool for creating new MqttService project skeleton
 
 |documentation status|
 
-.. |documentation status| image:: https://readthedocs.org/projects/gen-mqtt_service/badge/?version=latest
-   :target: https://gen-mqtt_service.readthedocs.io/en/latest/?badge=latest
+.. |documentation status| image:: https://readthedocs.org/projects/gen-mqtt-service/badge/?version=latest
+   :target: https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest
 
 More documentation and info at
 
-* `gen_mqtt_service.readthedocs.io <https://gen-mqtt_service.readthedocs.io>`_
+* `gen_mqtt_service.readthedocs.io <https://gen-mqtt-service.readthedocs.io>`_
 * `www.python.org <https://www.python.org/>`_
 
 👥 Contributing
