@@ -22,6 +22,7 @@ Info
 from __future__ import annotations
 
 from ats_utilities.base.setup.bundle import BaseBundle
+from ats_utilities.exceptions import ATSValueError, ATSTypeError
 from ats_utilities.validation.check_value import not_none
 from ats_utilities.validation.check_type import istype
 
@@ -34,7 +35,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.0.5'
+__version__ = '1.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,6 +49,7 @@ class GenMqttServiceBundleValidator:
 
             :methods:
                 | validate - Validates the gen_mqtt_service bundle.
+                | is_valid - Checks if the gen_mqtt_service bundle is valid.
     '''
 
     @classmethod
@@ -85,3 +87,18 @@ class GenMqttServiceBundleValidator:
         istype(bundle.service, IService, ctx, msg_service_istype)
         istype(bundle.subprocessor, ISubProcessor, ctx, msg_subprocessor_istype)
         istype(bundle.cli, ICLI, ctx, msg_cli_istype)
+
+    @classmethod
+    def is_valid(cls, genmqttservicebundle: GenMqttServiceBundle) -> bool:
+        '''
+            Checks if the genmqttservicebundle is valid.
+
+            :param genmqttservicebundle: The genmqttservicebundle to be checked.
+            :return: True if valid, False otherwise.
+        '''
+        try:
+            cls.validate(genmqttservicebundle)
+            return True
+
+        except (ATSValueError, ATSTypeError):
+            return False

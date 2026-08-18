@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.0.5'
+__version__ = '1.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -50,6 +50,7 @@ class GenMqttServiceBundleRegistry:
 
             :methods:
                 | create_bundle - Creates the gen_mqtt_service bundle.
+                | get_version - Returns the registry version.
     '''
 
     @classmethod
@@ -79,3 +80,13 @@ class GenMqttServiceBundleRegistry:
         GenMqttServiceBundleValidator.validate(bundle)
 
         return bundle
+
+    @classmethod
+    def get_version(cls) -> str:
+        '''
+            Returns the registry version.
+
+            :return: The registry version.
+            :exceptions: None.
+        '''
+        return __version__

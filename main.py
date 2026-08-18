@@ -21,7 +21,7 @@ Info
 
 from __future__ import annotations
 
-from sys import exit
+from sys import exit as sys_exit
 
 from gen_mqtt_service.engine import GenMqttService
 from gen_mqtt_service.setup.factory import GenMqttServiceBundleFactory
@@ -30,7 +30,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.0.5'
+__version__ = '1.1.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -55,4 +55,4 @@ if __name__ == '__main__':
         :exit code: 0 if successful, 1 otherwise.
         :exceptions: None
     '''
-    exit(0 if main() else 1)
+    sys_exit(0 if main() else 1)
