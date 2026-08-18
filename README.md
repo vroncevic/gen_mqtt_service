@@ -256,11 +256,11 @@ python3 main.py create --name mytool --type paho --output ./demo/
 
 ### 📚 Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen-mqtt_service/badge/?version=latest)](https://gen-mqtt_service.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen-mqtt-service/badge/?version=latest)](https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest)
 
 More documentation and info at
 
-* [gen_mqtt_service.readthedocs.io](https://gen-mqtt_service.readthedocs.io)
+* [gen_mqtt_service.readthedocs.io](https://gen-mqtt-service.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 
 ### 👥 Contributing
