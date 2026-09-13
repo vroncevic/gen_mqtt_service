@@ -101,6 +101,24 @@ class GenMqttServiceCommandDefinition:
                 required=True,
                 choices=None,
                 nargs=None
+            ),
+            OptionData(
+                name="--role",
+                help_text="generation role (subscriber, publisher, both)",
+                action=None,
+                default="both",
+                required=False,
+                choices=["subscriber", "publisher", "both"],
+                nargs=None
+            ),
+            OptionData(
+                name="--scope",
+                help_text="generation scope (module, demo)",
+                action=None,
+                default="demo",
+                required=False,
+                choices=["module", "demo"],
+                nargs=None
             )
         ]
 

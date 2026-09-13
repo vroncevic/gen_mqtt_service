@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Templates Architecture &amp; Usage Guide &#8212; gen_mqtt_service https://github.com/vroncevic/gen_mqtt_service/releases documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
+    
+    <script src="_static/documentation_options.js?v=54eb0701"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="main module" href="main.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="main.html" title="main module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">gen_mqtt_service https://github.com/vroncevic/gen_mqtt_service/releases documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Templates Architecture &amp; Usage Guide</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="templates-architecture-usage-guide">
+<h1>Templates Architecture &amp; Usage Guide<a class="headerlink" href="#templates-architecture-usage-guide" title="Link to this heading">¶</a></h1>
+<p><strong>gen_mqtt_service</strong> scaffolds complete MQTT client skeletons across multiple programming languages and runtime environments. Each template is engineered according to best architectural practices, from strict SOLID principles in Python to high-performance C11 and event-driven Node.js.</p>
+<section id="supported-template-types">
+<h2>Supported Template Types<a class="headerlink" href="#supported-template-types" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Template Type</p></th>
+<th class="head"><p>Language / Platform</p></th>
+<th class="head"><p>Transport</p></th>
+<th class="head"><p>Primary Library</p></th>
+<th class="head"><p>Architecture Pattern</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">paho</span></code></p></td>
+<td><p>Python 3.10+</p></td>
+<td><p>TCP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">paho-mqtt</span></code></p></td>
+<td><p>SOLID, Protocol-based DIP, Factory Pattern</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mosquitto</span></code></p></td>
+<td><p>C (C11)</p></td>
+<td><p>TCP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">libmosquitto</span></code></p></td>
+<td><p>Modular C11, Typed Constants, CMake / Make</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">node</span></code></p></td>
+<td><p>JavaScript (Node.js)</p></td>
+<td><p>TCP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mqtt</span></code> (NPM)</p></td>
+<td><p>Asynchronous Event-Driven</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">node_ws</span></code></p></td>
+<td><p>JavaScript (Node.js)</p></td>
+<td><p>WebSockets / TCP</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mqtt</span></code>, <code class="docutils literal notranslate"><span class="pre">aedes</span></code>, <code class="docutils literal notranslate"><span class="pre">ws</span></code></p></td>
+<td><p>WebSocket MQTT with Embedded Broker</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="generation-options">
+<h2>Generation Options<a class="headerlink" href="#generation-options" title="Link to this heading">¶</a></h2>
+<p>When running <code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span></code>, you can fine-tune what components are generated using <code class="docutils literal notranslate"><span class="pre">--role</span></code> and <code class="docutils literal notranslate"><span class="pre">--scope</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_mqtt_service<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;NAME&gt;<span class="w"> </span>--type<span class="w"> </span>&lt;TYPE&gt;<span class="w"> </span>--output<span class="w"> </span>&lt;DIR&gt;<span class="w"> </span><span class="o">[</span>--role<span class="w"> </span>&lt;ROLE&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--scope<span class="w"> </span>&lt;SCOPE&gt;<span class="o">]</span>
+</pre></div>
+</div>
+<section id="role-matrix-role">
+<h3>1. Role Matrix (<code class="docutils literal notranslate"><span class="pre">--role</span></code>)<a class="headerlink" href="#role-matrix-role" title="Link to this heading">¶</a></h3>
+<p>Controls the operational roles included in the generated project:</p>
+<ul class="simple">
+<li><p><strong>both</strong> <em>(default)</em>: Generates both <strong>Publisher</strong> and <strong>Subscriber</strong> components, along with shared connection infrastructure.</p></li>
+<li><p><strong>publisher</strong>: Generates only the <strong>Publisher</strong> component (and common connection modules). Excludes subscriber code.</p></li>
+<li><p><strong>subscriber</strong>: Generates only the <strong>Subscriber</strong> component (and common connection modules). Excludes publisher code.</p></li>
+</ul>
+</section>
+<section id="scope-matrix-scope">
+<h3>2. Scope Matrix (<code class="docutils literal notranslate"><span class="pre">--scope</span></code>)<a class="headerlink" href="#scope-matrix-scope" title="Link to this heading">¶</a></h3>
+<p>Controls whether you get a ready-to-run standalone demo or clean library modules to embed in existing systems:</p>
+<ul class="simple">
+<li><p><strong>demo</strong> <em>(default)</em>: Generates complete runnable scaffolding, including entry point scripts (<code class="docutils literal notranslate"><span class="pre">main.py</span></code>, <code class="docutils literal notranslate"><span class="pre">publisher.c</span></code>, <code class="docutils literal notranslate"><span class="pre">server.js</span></code>, etc.), shell runners (<code class="docutils literal notranslate"><span class="pre">run_publisher.sh</span></code>, <code class="docutils literal notranslate"><span class="pre">run_subscriber.sh</span></code>), build configurations (<code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>), and documentation.</p></li>
+<li><p><strong>module</strong>: Strips out all scaffolding and runner scripts, generating only the pure reusable source modules. Ideal when embedding MQTT capabilities into an existing codebase.</p></li>
+</ul>
+</section>
+</section>
+<section id="detailed-template-architectures">
+<h2>Detailed Template Architectures<a class="headerlink" href="#detailed-template-architectures" title="Link to this heading">¶</a></h2>
+<section id="python-paho-paho">
+<h3>1. Python Paho (<code class="docutils literal notranslate"><span class="pre">paho</span></code>)<a class="headerlink" href="#python-paho-paho" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">paho</span></code> template is designed around <strong>Clean Architecture</strong>, <strong>Dependency Inversion (DIP)</strong>, and <strong>Single Responsibility (SRP)</strong>.</p>
+<p>Directory Structure (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--role</span> <span class="pre">both</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;project_name&gt;/
+├── common/
+│   ├── imqtt_client.py           # Protocol: IMqttClient interface (PEP 544)
+│   ├── mqtt_client.py            # Concrete MqttClient (wraps paho.mqtt.client)
+│   └── mqtt_bundle.py            # Connection config value object / dataclass
+├── publisher/
+│   ├── imqtt_publisher.py        # Protocol: IMqttPublisher interface
+│   ├── mqtt_publisher.py         # Domain publisher implementation
+│   ├── mqtt_publisher_factory.py # Factory creating wired publisher instances
+│   └── main.py                   # Standalone publisher CLI entry point
+├── subscriber/
+│   ├── imqtt_subscriber.py       # Protocol: IMqttSubscriber interface
+│   ├── imqtt_message_handler.py  # Protocol: IMqttMessageHandler interface
+│   ├── mqtt_message_handler.py   # Concrete payload / topic handler
+│   ├── mqtt_subscriber.py        # Domain subscriber implementation
+│   ├── mqtt_subscriber_factory.py# Factory creating wired subscriber instances
+│   └── main.py                   # Standalone subscriber CLI entry point
+├── pyproject.toml                # Project metadata and type checker path config
+├── requirements.txt              # Dependencies (paho-mqtt)
+├── README.md                     # Project documentation
+├── run_publisher.sh              # Publisher start script
+└── run_subscriber.sh             # Subscriber start script
+</pre></div>
+</div>
+<p>Key Design Highlights:</p>
+<ul class="simple">
+<li><p><strong>Structural Protocol Typing</strong>: All interfaces are defined using <code class="docutils literal notranslate"><span class="pre">&#64;runtime_checkable</span></code> <code class="docutils literal notranslate"><span class="pre">typing.Protocol</span></code>. Concrete implementations do <strong>not</strong> inherit from or import protocols, avoiding circular imports and tight coupling.</p></li>
+<li><p><strong>Dependency Inversion</strong>: Neither <code class="docutils literal notranslate"><span class="pre">MqttPublisher</span></code> nor <code class="docutils literal notranslate"><span class="pre">MqttSubscriber</span></code> imports or depends on the third-party <code class="docutils literal notranslate"><span class="pre">paho</span></code> library. They depend strictly on <code class="docutils literal notranslate"><span class="pre">IMqttClient</span></code> and <code class="docutils literal notranslate"><span class="pre">IMqttMessageHandler</span></code>.</p></li>
+<li><p><strong>Clean Factories</strong>: <code class="docutils literal notranslate"><span class="pre">MqttPublisherFactory</span></code> and <code class="docutils literal notranslate"><span class="pre">MqttSubscriberFactory</span></code> encapsulate the composition root, instantiating <code class="docutils literal notranslate"><span class="pre">MqttClient</span></code> and wiring it into publishers and subscribers.</p></li>
+<li><p><strong>Standalone IDE Support</strong>: Includes <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> with <code class="docutils literal notranslate"><span class="pre">[tool.pyright]</span> <span class="pre">extraPaths</span> <span class="pre">=</span> <span class="pre">[&quot;.&quot;]</span></code> so linters and language servers resolve imports immediately upon opening the project folder.</p></li>
+</ul>
+<p>Running the Python Demo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 2. In terminal A: Start subscriber</span>
+bash<span class="w"> </span>run_subscriber.sh
+
+<span class="c1"># 3. In terminal B: Publish messages</span>
+bash<span class="w"> </span>run_publisher.sh
+</pre></div>
+</div>
+</section>
+<section id="c-mosquitto-mosquitto">
+<h3>2. C Mosquitto (<code class="docutils literal notranslate"><span class="pre">mosquitto</span></code>)<a class="headerlink" href="#c-mosquitto-mosquitto" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">mosquitto</span></code> template provides high-performance, memory-safe C11 code linking against <code class="docutils literal notranslate"><span class="pre">libmosquitto</span></code>.</p>
+<p>Directory Structure (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--role</span> <span class="pre">both</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;project_name&gt;/
+├── CMakeLists.txt     # Modern CMake build definition
+├── Makefile           # Convenience makefile wrapping CMake
+├── publisher.c        # Standalone C publisher
+├── subscriber.c       # Standalone C subscriber
+└── README.md          # Build and run instructions
+</pre></div>
+</div>
+<p>Key Design Highlights:</p>
+<ul class="simple">
+<li><p><strong>Modern C11 Standards</strong>: Pure C11 compliant, avoiding deprecated constructs.</p></li>
+<li><p><strong>Type-Safe Constants</strong>: All connection options, QoS levels, and buffer limits are declared using strongly typed <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">const</span></code> variables instead of brittle <code class="docutils literal notranslate"><span class="pre">#define</span></code> preprocessor macros.</p></li>
+<li><p><strong>Memory &amp; Buffer Safety</strong>: Bounded string operations (<code class="docutils literal notranslate"><span class="pre">snprintf</span></code>) and explicit unused parameter suppressions ensure 0 compiler warnings under <code class="docutils literal notranslate"><span class="pre">-Wall</span> <span class="pre">-Wextra</span> <span class="pre">-Wpedantic</span></code>.</p></li>
+</ul>
+<p>Building and Running the C Demo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prerequisites (Debian/Ubuntu)</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>cmake<span class="w"> </span>libmosquitto-dev
+
+<span class="c1"># 1. Build using Makefile or CMake</span>
+make
+
+<span class="c1"># 2. In terminal A: Run subscriber</span>
+./build/subscriber
+
+<span class="c1"># 3. In terminal B: Run publisher</span>
+./build/publisher
+</pre></div>
+</div>
+</section>
+<section id="node-js-standard-mqtt-node">
+<h3>3. Node.js Standard MQTT (<code class="docutils literal notranslate"><span class="pre">node</span></code>)<a class="headerlink" href="#node-js-standard-mqtt-node" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">node</span></code> template offers an asynchronous, event-driven MQTT client designed for Node.js environments.</p>
+<p>Directory Structure (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--role</span> <span class="pre">both</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;project_name&gt;/
+├── package.json       # Node.js dependencies (mqtt) and run scripts
+├── publisher.js       # Asynchronous MQTT publisher
+├── subscriber.js      # Asynchronous MQTT subscriber
+├── README.md          # Instructions
+├── run_publisher.sh   # Bash wrapper to run npm run publish
+└── run_subscriber.sh  # Bash wrapper to run npm run subscribe
+</pre></div>
+</div>
+<p>Key Design Highlights:</p>
+<ul class="simple">
+<li><p><strong>Event-Driven Architecture</strong>: Hooks into native MQTT events (<code class="docutils literal notranslate"><span class="pre">connect</span></code>, <code class="docutils literal notranslate"><span class="pre">message</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code>, <code class="docutils literal notranslate"><span class="pre">close</span></code>, <code class="docutils literal notranslate"><span class="pre">reconnect</span></code>).</p></li>
+<li><p><strong>Clean Configuration</strong>: Centralized broker URL (<code class="docutils literal notranslate"><span class="pre">mqtt://localhost:1883</span></code>), topic, and options object.</p></li>
+<li><p><strong>QoS Support</strong>: Configurable Quality of Service (QoS 0, 1, 2) and retain flag.</p></li>
+</ul>
+<p>Running the Node.js Demo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Install dependencies</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># 2. In terminal A: Run subscriber</span>
+bash<span class="w"> </span>run_subscriber.sh
+
+<span class="c1"># 3. In terminal B: Run publisher</span>
+bash<span class="w"> </span>run_publisher.sh
+</pre></div>
+</div>
+</section>
+<section id="node-js-websocket-mqtt-with-embedded-broker-node-ws">
+<h3>4. Node.js WebSocket MQTT with Embedded Broker (<code class="docutils literal notranslate"><span class="pre">node_ws</span></code>)<a class="headerlink" href="#node-js-websocket-mqtt-with-embedded-broker-node-ws" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">node_ws</span></code> template is designed for browser-compatible WebSockets and self-contained deployments.</p>
+<p>Directory Structure (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--role</span> <span class="pre">both</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;project_name&gt;/
+├── package.json       # Dependencies (mqtt, ws, aedes, aedes-server-factory)
+├── server.js          # Embedded Aedes MQTT broker (WebSocket + TCP)
+├── publisher.js       # WebSocket MQTT publisher
+├── subscriber.js      # WebSocket MQTT subscriber
+├── README.md          # Instructions
+├── run_publisher.sh   # Bash wrapper to run npm run publish
+└── run_subscriber.sh  # Bash wrapper to run npm run subscribe
+</pre></div>
+</div>
+<p>Key Design Highlights:</p>
+<ul class="simple">
+<li><p><strong>Embedded Aedes Broker</strong>: <code class="docutils literal notranslate"><span class="pre">server.js</span></code> starts a lightweight, embedded MQTT broker listening on:
+* <strong>WebSocket port 8080</strong> (<code class="docutils literal notranslate"><span class="pre">ws://localhost:8080</span></code>)
+* <strong>Standard TCP port 1883</strong> (<code class="docutils literal notranslate"><span class="pre">mqtt://localhost:1883</span></code>)</p></li>
+<li><p><strong>Browser Ready</strong>: Enables web applications and hybrid clients to publish and subscribe directly over WebSockets without needing proxy software.</p></li>
+<li><p><strong>Zero External Dependencies</strong>: Does not require an external broker like Mosquitto to be installed, making it instantly runnable.</p></li>
+</ul>
+<p>Running the Node.js WebSocket Demo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Install dependencies</span>
+npm<span class="w"> </span>install
+
+<span class="c1"># 2. In terminal A: Start embedded broker</span>
+node<span class="w"> </span>server.js
+
+<span class="c1"># 3. In terminal B: Run subscriber</span>
+bash<span class="w"> </span>run_subscriber.sh
+
+<span class="c1"># 4. In terminal C: Run publisher</span>
+bash<span class="w"> </span>run_publisher.sh
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integration-guide-embedding-as-module-scope-module">
+<h2>Integration Guide: Embedding as Module (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">module</span></code>)<a class="headerlink" href="#integration-guide-embedding-as-module-scope-module" title="Link to this heading">¶</a></h2>
+<p>When you specify <code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">module</span></code>, <code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span></code> generates strictly the business and transport modules, allowing seamless integration into existing applications.</p>
+<p>Example: Embedding Python <code class="docutils literal notranslate"><span class="pre">paho</span></code> into an Existing Application:</p>
+<ol class="arabic simple">
+<li><p>Generate the module:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_mqtt_service<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>telemetry<span class="w"> </span>--type<span class="w"> </span>paho<span class="w"> </span>--role<span class="w"> </span>both<span class="w"> </span>--scope<span class="w"> </span>module<span class="w"> </span>--output<span class="w"> </span>./my_app/
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Your project structure:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my_app/
+└── telemetry/
+    ├── common/
+    │   ├── imqtt_client.py
+    │   ├── mqtt_client.py
+    │   └── mqtt_bundle.py
+    ├── publisher/
+    │   ├── imqtt_publisher.py
+    │   ├── mqtt_publisher.py
+    │   └── mqtt_publisher_factory.py
+    └── subscriber/
+        ├── imqtt_subscriber.py
+        ├── imqtt_message_handler.py
+        ├── mqtt_message_handler.py
+        ├── mqtt_subscriber.py
+        └── mqtt_subscriber_factory.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Use it directly in your application code:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_app.telemetry.common.mqtt_bundle</span> <span class="kn">import</span> <span class="n">MqttBundle</span>
+<span class="kn">from</span> <span class="nn">my_app.telemetry.publisher.mqtt_publisher_factory</span> <span class="kn">import</span> <span class="n">MqttPublisherFactory</span>
+
+<span class="n">bundle</span> <span class="o">=</span> <span class="n">MqttBundle</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;mqtt.internal.net&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">1883</span><span class="p">,</span>
+    <span class="n">keepalive</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;sensor_user&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;secret_password&quot;</span>
+<span class="p">)</span>
+
+<span class="n">publisher</span> <span class="o">=</span> <span class="n">MqttPublisherFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">bundle</span><span class="p">)</span>
+<span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">topic</span><span class="o">=</span><span class="s2">&quot;sensors/temperature&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="s2">&quot;21.5&quot;</span><span class="p">,</span> <span class="n">qos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">publisher</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="summary-matrix">
+<h2>Summary Matrix<a class="headerlink" href="#summary-matrix" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Need / Use Case</p></th>
+<th class="head"><p>Recommended Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Python microservice / backend service</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">svc</span> <span class="pre">--type</span> <span class="pre">paho</span> <span class="pre">--role</span> <span class="pre">both</span> <span class="pre">--scope</span> <span class="pre">module</span> <span class="pre">--output</span> <span class="pre">./</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Python quick demo &amp; testing</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">demo</span> <span class="pre">--type</span> <span class="pre">paho</span> <span class="pre">--role</span> <span class="pre">both</span> <span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--output</span> <span class="pre">./</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Embedded C / IoT firmware publisher</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">iot_node</span> <span class="pre">--type</span> <span class="pre">mosquitto</span> <span class="pre">--role</span> <span class="pre">publisher</span> <span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--output</span> <span class="pre">./</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Node.js backend listener / ingestion service</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">ingest</span> <span class="pre">--type</span> <span class="pre">node</span> <span class="pre">--role</span> <span class="pre">subscriber</span> <span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--output</span> <span class="pre">./</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Web front-end or browser-accessible MQTT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gen_mqtt_service</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">web_mqtt</span> <span class="pre">--type</span> <span class="pre">node_ws</span> <span class="pre">--role</span> <span class="pre">both</span> <span class="pre">--scope</span> <span class="pre">demo</span> <span class="pre">--output</span> <span class="pre">./</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Templates Architecture &amp; Usage Guide</a><ul>
+<li><a class="reference internal" href="#supported-template-types">Supported Template Types</a></li>
+<li><a class="reference internal" href="#generation-options">Generation Options</a><ul>
+<li><a class="reference internal" href="#role-matrix-role">1. Role Matrix (<code class="docutils literal notranslate"><span class="pre">--role</span></code>)</a></li>
+<li><a class="reference internal" href="#scope-matrix-scope">2. Scope Matrix (<code class="docutils literal notranslate"><span class="pre">--scope</span></code>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-template-architectures">Detailed Template Architectures</a><ul>
+<li><a class="reference internal" href="#python-paho-paho">1. Python Paho (<code class="docutils literal notranslate"><span class="pre">paho</span></code>)</a></li>
+<li><a class="reference internal" href="#c-mosquitto-mosquitto">2. C Mosquitto (<code class="docutils literal notranslate"><span class="pre">mosquitto</span></code>)</a></li>
+<li><a class="reference internal" href="#node-js-standard-mqtt-node">3. Node.js Standard MQTT (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</a></li>
+<li><a class="reference internal" href="#node-js-websocket-mqtt-with-embedded-broker-node-ws">4. Node.js WebSocket MQTT with Embedded Broker (<code class="docutils literal notranslate"><span class="pre">node_ws</span></code>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#integration-guide-embedding-as-module-scope-module">Integration Guide: Embedding as Module (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">module</span></code>)</a></li>
+<li><a class="reference internal" href="#summary-matrix">Summary Matrix</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="main.html"
+                          title="previous chapter">main module</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/templates_guide.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="main.html" title="main module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">gen_mqtt_service https://github.com/vroncevic/gen_mqtt_service/releases documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Templates Architecture &amp; Usage Guide</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    </div>
+  </body>
+</html>

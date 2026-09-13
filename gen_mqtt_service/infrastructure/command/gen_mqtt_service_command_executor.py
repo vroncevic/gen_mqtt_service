@@ -25,6 +25,7 @@ from collections.abc import Mapping
 
 from ats_utilities.utils.reflection import to_str
 
+from gen_mqtt_service.core.model.project_setup import ProjectSetup
 from gen_mqtt_service.infrastructure.command.icommand_definition import ICommandDefinition
 from gen_mqtt_service.core.service.iservice import IService
 
@@ -32,7 +33,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.5'
+__version__ = '1.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,6 +49,7 @@ class GenMqttServiceCommandExecutor:
                 | definition - The command CLI metadata definition.
             :methods:
                 | execute - Executes the subcommand.
+                | get_definition - Returns the command definition metadata.
                 | __str__ - Returns the GenMqttServiceCommandExecutor as string representation.
     '''
 
@@ -61,17 +63,43 @@ class GenMqttServiceCommandExecutor:
         '''
         self.definition = definition
 
-    def execute(self, *, params: Mapping[str, object], service: IService) -> Mapping[str, object]:
+    def execute(self, *, params: Mapping[str, object] | ProjectSetup, service: IService) -> Mapping[str, object]:
         '''
             Executes the subcommand.
 
-            :param params: Subcommand parameters from CLI parser.
+            :param params: Subcommand parameters from CLI parser or ProjectSetup model.
             :param service: Command orchestrator service instance.
             :return: The result of the subcommand execution.
         '''
-        return service.execute(params=params) if service.is_initialized() else {
-            'returncode': 1, 'stdout': '', 'stderr': 'service not initialized'
-        }
+        if not service.is_initialized():
+            return {
+                'returncode': 1,
+                'stdout': '',
+                'stderr': 'service not initialized'
+            }
+
+        project_setup: ProjectSetup
+        if isinstance(params, ProjectSetup):
+            project_setup = params
+        else:
+            project_setup = ProjectSetup(
+                name=str(params.get('name', 'myapp')),
+                service_type=str(params.get('type', params.get('service_type', 'paho'))),
+                role=str(params.get('role', 'both')),
+                scope=str(params.get('scope', 'demo')),
+                output=str(params.get('output', './'))
+            )
+
+        return service.execute(params=project_setup)
+
+    def get_definition(self) -> ICommandDefinition:
+        '''
+            Returns the command definition metadata.
+
+            :return: The command definition metadata.
+            :exceptions: None.
+        '''
+        return self.definition
 
     def __str__(self) -> str:
         '''

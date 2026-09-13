@@ -21,6 +21,8 @@ Info
 
 from __future__ import annotations
 
+from os.path import abspath, dirname, join
+
 from ats_utilities.base.setup.factory import BaseBundleFactory
 from ats_utilities.base.setup.bundle import BaseBundle
 from ats_utilities.base.setup.options import BaseBundleOptions
@@ -47,7 +49,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.5'
+__version__ = '1.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -66,7 +68,10 @@ class GenMqttServiceBundleFactory:
                 | get_version - Returns the factory version.
     '''
 
-    _info_file: str = 'gen_mqtt_service/infrastructure/config/gen_mqtt_service.cfg'
+    _info_file: str = join(
+        dirname(dirname(abspath(__file__))),
+        'infrastructure', 'config', 'gen_mqtt_service.cfg'
+    )
 
     @classmethod
     def create_bundle(cls, options: GenMqttServiceBundleOptions | None = None) -> GenMqttServiceBundle:

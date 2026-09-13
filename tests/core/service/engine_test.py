@@ -9,7 +9,7 @@ Info
 
 from __future__ import annotations
 
-import unittest
+from unittest import TestCase, main
 from unittest.mock import Mock
 
 from gen_mqtt_service.core.model.project_setup import ProjectSetup
@@ -18,6 +18,10 @@ from gen_mqtt_service.core.service.isubprocessor import ISubProcessor
 
 
 class DummySubProcessor:
+    '''
+        Dummy subprocessor implementing ISubProcessor protocol.
+    '''
+
     def run(self, *, params: object) -> dict[str, object]:
         return {}
 
@@ -25,7 +29,11 @@ class DummySubProcessor:
         return True
 
 
-class TestService(unittest.TestCase):
+class TestService(TestCase):
+    '''
+        Tests for Service application orchestrator.
+    '''
+
     def test_service_initialization_success(self) -> None:
         subprocessor = DummySubProcessor()
         service = Service(subprocessor)
@@ -43,18 +51,28 @@ class TestService(unittest.TestCase):
         subprocessor = DummySubProcessor()
         expected_result = {'returncode': 0, 'stdout': 'success', 'stderr': ''}
         subprocessor.run = Mock(return_value=expected_result)
-        
+
         service = Service(subprocessor)
-        params = ProjectSetup(chip_config={})
+        params = ProjectSetup(
+            name='test',
+            service_type='paho',
+            role='both',
+            scope='demo',
+            output='./'
+        )
         result = service.execute(params=params)
-        
+
         self.assertEqual(result, expected_result)
         subprocessor.run.assert_called_once_with(params=params)
 
     def test_service_is_initialized(self) -> None:
         subprocessor = DummySubProcessor()
         subprocessor.is_initialized = Mock(return_value=True)
-        
+
         service = Service(subprocessor)
         self.assertTrue(service.is_initialized())
         subprocessor.is_initialized.assert_called_once()
+
+
+if __name__ == '__main__':
+    main()

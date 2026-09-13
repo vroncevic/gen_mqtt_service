@@ -71,6 +71,24 @@ other information that should be provided before the tool is installed.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="templates_guide.html">Templates Architecture &amp; Usage Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates_guide.html#supported-template-types">Supported Template Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates_guide.html#generation-options">Generation Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#role-matrix-role">1. Role Matrix (<code class="docutils literal notranslate"><span class="pre">--role</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#scope-matrix-scope">2. Scope Matrix (<code class="docutils literal notranslate"><span class="pre">--scope</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates_guide.html#detailed-template-architectures">Detailed Template Architectures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#python-paho-paho">1. Python Paho (<code class="docutils literal notranslate"><span class="pre">paho</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#c-mosquitto-mosquitto">2. C Mosquitto (<code class="docutils literal notranslate"><span class="pre">mosquitto</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#node-js-standard-mqtt-node">3. Node.js Standard MQTT (<code class="docutils literal notranslate"><span class="pre">node</span></code>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="templates_guide.html#node-js-websocket-mqtt-with-embedded-broker-node-ws">4. Node.js WebSocket MQTT with Embedded Broker (<code class="docutils literal notranslate"><span class="pre">node_ws</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="templates_guide.html#integration-guide-embedding-as-module-scope-module">Integration Guide: Embedding as Module (<code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">module</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates_guide.html#summary-matrix">Summary Matrix</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -173,7 +191,9 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <h1>✨ Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h1>
 <ul class="simple">
 <li><p>Automatically scaffolds MQTT service publisher/subscriber client skeleton projects.</p></li>
-<li><p>Provides a modular and extensible architecture based on OOP and SOLID principles.</p></li>
+<li><p>Multi-language &amp; multi-platform support: Python (Paho), C (Mosquitto), Node.js, and Node.js WebSocket.</p></li>
+<li><p>Fine-grained control with <code class="docutils literal notranslate"><span class="pre">--role</span> <span class="pre">{subscriber,publisher,both}</span></code> and <code class="docutils literal notranslate"><span class="pre">--scope</span> <span class="pre">{module,demo}</span></code>.</p></li>
+<li><p>Provides a modular and extensible architecture based on OOP, SOLID, and Clean Architecture principles.</p></li>
 <li><p>Includes command line interface (CLI) support via a command/executor structure.</p></li>
 <li><p>Robust validation of project bundles, dependencies, and options.</p></li>
 <li><p>Comes with configurable templates and JSON schema definitions.</p></li>
@@ -199,7 +219,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 </thead>
 <tbody>
 <tr class="row-even"><td><p>gen_mqtt_service/__init__.py</p></td>
-<td><p>8</p></td>
+<td><p>9</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -214,7 +234,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>gen_mqtt_service/core/model/project_setup.py</p></td>
-<td><p>14</p></td>
+<td><p>19</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -324,7 +344,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_executor.py</p></td>
-<td><p>21</p></td>
+<td><p>29</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -334,12 +354,12 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>gen_mqtt_service/infrastructure/command/icommand_executor.py</p></td>
-<td><p>13</p></td>
+<td><p>14</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
 <tr class="row-even"><td><p>gen_mqtt_service/infrastructure/subprocessor.py</p></td>
-<td><p>55</p></td>
+<td><p>77</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -364,7 +384,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>gen_mqtt_service/setup/factory.py</p></td>
-<td><p>48</p></td>
+<td><p>49</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -394,7 +414,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 <td><p>100%</p></td>
 </tr>
 <tr class="row-odd"><td><p>Total</p></td>
-<td><p>927</p></td>
+<td><p>965</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -412,9 +432,23 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_mqtt_service
 </pre></div>
 </div>
 <p>Running tool for creating new MqttService project skeleton</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mytool<span class="w"> </span>--type<span class="w"> </span>paho<span class="w"> </span>--output<span class="w"> </span>./demo/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python Paho complete demo (both publisher and subscriber)</span>
+python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mytool<span class="w"> </span>--type<span class="w"> </span>paho<span class="w"> </span>--output<span class="w"> </span>./demo/
+
+<span class="c1"># Python Paho publisher module only</span>
+python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>mypub<span class="w"> </span>--type<span class="w"> </span>paho<span class="w"> </span>--role<span class="w"> </span>publisher<span class="w"> </span>--scope<span class="w"> </span>module<span class="w"> </span>--output<span class="w"> </span>./services/
+
+<span class="c1"># C Mosquitto subscriber demo</span>
+python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>myclient<span class="w"> </span>--type<span class="w"> </span>mosquitto<span class="w"> </span>--role<span class="w"> </span>subscriber<span class="w"> </span>--scope<span class="w"> </span>demo<span class="w"> </span>--output<span class="w"> </span>./demo/
+
+<span class="c1"># Node.js standard MQTT demo</span>
+python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>node_mqtt<span class="w"> </span>--type<span class="w"> </span>node<span class="w"> </span>--role<span class="w"> </span>both<span class="w"> </span>--scope<span class="w"> </span>demo<span class="w"> </span>--output<span class="w"> </span>./demo/
+
+<span class="c1"># Node.js WebSocket MQTT with embedded Aedes broker</span>
+python3<span class="w"> </span>main.py<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>node_ws_svc<span class="w"> </span>--type<span class="w"> </span>node_ws<span class="w"> </span>--role<span class="w"> </span>both<span class="w"> </span>--scope<span class="w"> </span>demo<span class="w"> </span>--output<span class="w"> </span>./demo/
 </pre></div>
 </div>
+<p>For comprehensive details on template architecture and deployment, see <a class="reference internal" href="templates_guide.html"><span class="doc">Templates Architecture &amp; Usage Guide</span></a>.</p>
 </section>
 <section id="docs">
 <h1>📚 Docs<a class="headerlink" href="#docs" title="Link to this heading">¶</a></h1>
