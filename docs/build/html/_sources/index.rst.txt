@@ -29,6 +29,7 @@ other information that should be provided before the tool is installed.
 
    self
    modules
+   templates_guide
 
 🚀 Installation
 ------------------
@@ -152,7 +153,9 @@ Tool structure
 --------------
 
 * Automatically scaffolds MQTT service publisher/subscriber client skeleton projects.
-* Provides a modular and extensible architecture based on OOP and SOLID principles.
+* Multi-language & multi-platform support: Python (Paho), C (Mosquitto), Node.js, and Node.js WebSocket.
+* Fine-grained control with ``--role {subscriber,publisher,both}`` and ``--scope {module,demo}``.
+* Provides a modular and extensible architecture based on OOP, SOLID, and Clean Architecture principles.
 * Includes command line interface (CLI) support via a command/executor structure.
 * Robust validation of project bundles, dependencies, and options.
 * Comes with configurable templates and JSON schema definitions.
@@ -185,7 +188,22 @@ Running tool for creating new MqttService project skeleton
 
 .. code-block:: bash
 
+    # Python Paho complete demo (both publisher and subscriber)
     python3 main.py create --name mytool --type paho --output ./demo/
+
+    # Python Paho publisher module only
+    python3 main.py create --name mypub --type paho --role publisher --scope module --output ./services/
+
+    # C Mosquitto subscriber demo
+    python3 main.py create --name myclient --type mosquitto --role subscriber --scope demo --output ./demo/
+
+    # Node.js standard MQTT demo
+    python3 main.py create --name node_mqtt --type node --role both --scope demo --output ./demo/
+
+    # Node.js WebSocket MQTT with embedded Aedes broker
+    python3 main.py create --name node_ws_svc --type node_ws --role both --scope demo --output ./demo/
+
+For comprehensive details on template architecture and deployment, see :doc:`templates_guide`.
 
 📚 Docs
 ----------

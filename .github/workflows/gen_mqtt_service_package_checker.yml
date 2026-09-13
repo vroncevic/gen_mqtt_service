@@ -1,13 +1,13 @@
 name: gen_mqtt_service_package_checker
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
     paths:
       - 'gen_mqtt_service/**'
       - 'tests/**'
       - 'setup.py'
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
     paths:
       - 'gen_mqtt_service/**'
       - 'tests/**'

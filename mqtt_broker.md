@@ -51,3 +51,7 @@ The main advantages of MQTT broker are:
 - can easily scale from a single device to thousands
 - manages and tracks all client connection states, including security credentials and certificates
 - reduced network strain without compromising the security (cellular or satellite network)
+
+### Embedded Broker Support
+
+If you need a lightweight, self-contained environment without deploying an external broker daemon, `gen_mqtt_service` provides the `node_ws` template with an embedded **Aedes** MQTT broker capable of serving both WebSockets (`ws://localhost:8080`) and TCP (`mqtt://localhost:1883`) simultaneously. For setup and execution details, see the [Templates Architecture & Usage Guide](templates_guide.md).

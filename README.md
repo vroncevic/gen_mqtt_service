@@ -176,12 +176,14 @@ Tool structure
 
 #### ✨ Features
 
-* Automatically scaffolds MqttService projects with build/make files.
-* Provides a modular and extensible architecture based on OOP and SOLID principles.
-* Includes command line interface (CLI) support via a command/executor structure.
-* Robust validation of project bundles, dependencies, and options.
-* Comes with configurable templates and JSON schema definitions.
-* High code quality with full type checking and 100% unit test coverage.
+* Automatically scaffolds MQTT service publisher/subscriber client skeleton projects.
+* Multi-language and multi-platform support: Python (`paho`), C (`mosquitto`), Node.js (`node`), and Node.js WebSocket (`node_ws`).
+* Granular generation control via `--role {subscriber,publisher,both}` and `--scope {module,demo}`.
+* Engineered with OOP, SOLID principles, and Clean Architecture (PEP 544 structural protocols in Python).
+* Command line interface (CLI) support via structured command and executor layers.
+* Robust validation of project bundles, dependencies, and generation parameters.
+* Configurable compressed templates (`templates.tgz`) and JSON schema definitions.
+* Production code quality with 100% test coverage and strict type annotations.
 
 ### 📊 Code coverage
 
@@ -190,10 +192,10 @@ Tool structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_mqtt_service/__init__.py` | 8 | 0 | 100%|
+| `gen_mqtt_service/__init__.py` | 9 | 0 | 100%|
 | `gen_mqtt_service/core/__init__.py` | 9 | 0 | 100%|
 | `gen_mqtt_service/core/model/__init__.py` | 9 | 0 | 100%|
-| `gen_mqtt_service/core/model/project_setup.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/core/model/project_setup.py` | 19 | 0 | 100%|
 | `gen_mqtt_service/core/service/__init__.py` | 9 | 0 | 100%|
 | `gen_mqtt_service/core/service/engine.py` | 27 | 0 | 100%|
 | `gen_mqtt_service/core/service/iservice.py` | 14 | 0 | 100%|
@@ -215,21 +217,21 @@ Tool structure
 | `gen_mqtt_service/infrastructure/command/__init__.py` | 9 | 0 | 100%|
 | `gen_mqtt_service/infrastructure/command/command.py` | 16 | 0 | 100%|
 | `gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_definition.py` | 24 | 0 | 100%|
-| `gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_executor.py` | 21 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/gen_mqtt_service_command_executor.py` | 29 | 0 | 100%|
 | `gen_mqtt_service/infrastructure/command/icommand_definition.py` | 14 | 0 | 100%|
-| `gen_mqtt_service/infrastructure/command/icommand_executor.py` | 13 | 0 | 100%|
-| `gen_mqtt_service/infrastructure/subprocessor.py` | 55 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/command/icommand_executor.py` | 14 | 0 | 100%|
+| `gen_mqtt_service/infrastructure/subprocessor.py` | 77 | 0 | 100%|
 | `gen_mqtt_service/setup/__init__.py` | 9 | 0 | 100%|
 | `gen_mqtt_service/setup/bundle.py` | 23 | 0 | 100%|
 | `gen_mqtt_service/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_mqtt_service/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_mqtt_service/setup/factory.py` | 48 | 0 | 100%|
+| `gen_mqtt_service/setup/factory.py` | 49 | 0 | 100%|
 | `gen_mqtt_service/setup/keys.py` | 27 | 0 | 100%|
 | `gen_mqtt_service/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_mqtt_service/setup/options.py` | 12 | 0 | 100%|
 | `gen_mqtt_service/setup/registry.py` | 32 | 0 | 100%|
 | `gen_mqtt_service/setup/validator.py` | 48 | 0 | 100%|
-| **Total** | 927 | 0 | 100% |
+| **Total** | 965 | 0 | 100% |
 
 </details>
 
@@ -248,18 +250,40 @@ Prepare main entry point by downloading [main.py](https://raw.githubusercontent.
 wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/main/main.py
 ```
 
-Running tool for creating new MqttService project skeleton
+Running tool for creating new MqttService project skeleton:
 
 ```bash
+# Python Paho complete demo (both publisher & subscriber)
 python3 main.py create --name mytool --type paho --output ./demo/
+
+# Python Paho publisher module only (for embedding in existing services)
+python3 main.py create --name mypub --type paho --role publisher --scope module --output ./services/
+
+# C Mosquitto subscriber demo
+python3 main.py create --name myclient --type mosquitto --role subscriber --scope demo --output ./demo/
+
+# Node.js standard MQTT demo
+python3 main.py create --name node_mqtt --type node --role both --scope demo --output ./demo/
+
+# Node.js WebSocket MQTT with embedded Aedes broker
+python3 main.py create --name node_ws_svc --type node_ws --role both --scope demo --output ./demo/
 ```
+
+For complete architecture details, design patterns, and instructions for building and running each template, see the [Templates Architecture & Usage Guide](templates_guide.md).
 
 ### 📚 Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen-mqtt-service/badge/?version=latest)](https://gen-mqtt-service.readthedocs.io/en/latest/?badge=latest)
 
-More documentation and info at
+More documentation and info at:
 
+* [Templates Architecture & Usage Guide](templates_guide.md)
+* [MQTT Protocol Overview](overview.md)
+* [MQTT Broker Architecture](mqtt_broker.md)
+* [MQTT Version 5.0 Support](mqtt_v5.md)
+* [Quality of Service (QoS)](quality_of_service.md)
+* [Message Types](message_types.md)
+* [Temperature Service Example](example.md)
 * [gen_mqtt_service.readthedocs.io](https://gen-mqtt-service.readthedocs.io)
 * [www.python.org](https://www.python.org/)
 

@@ -32,4 +32,4 @@ class TestGenMqttServiceBundleFactory(unittest.TestCase):
             GenMqttServiceBundleFactory.create_bundle(options)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenMqttServiceBundleFactory.get_version(), '1.1.5')
+        self.assertEqual(GenMqttServiceBundleFactory.get_version(), '1.1.6')

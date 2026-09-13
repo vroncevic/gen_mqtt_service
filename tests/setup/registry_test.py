@@ -72,4 +72,4 @@ class TestGenMqttServiceBundleRegistry(unittest.TestCase):
             GenMqttServiceBundleRegistry.create_bundle(None)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenMqttServiceBundleRegistry.get_version(), '1.1.5')
+        self.assertEqual(GenMqttServiceBundleRegistry.get_version(), '1.1.6')

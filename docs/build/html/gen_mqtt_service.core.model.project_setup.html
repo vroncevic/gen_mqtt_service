@@ -69,7 +69,7 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_mqtt_service.core.model.project_setup.</span></span><span class="sig-name descname"><span class="pre">ProjectSetup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chip_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_mqtt_service/core/model/project_setup.html#ProjectSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_mqtt_service.core.model.project_setup.</span></span><span class="sig-name descname"><span class="pre">ProjectSetup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_mqtt_service/core/model/project_setup.html#ProjectSetup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Defines domain model for a project setup.</p>
 <p>It defines:</p>
@@ -77,15 +77,58 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
 <div><dl class="field-list">
 <dt class="field-odd">attributes<span class="colon">:</span></dt>
 <dd class="field-odd"><div class="line-block">
-<div class="line">chip_config - Mapping with chip configuration.</div>
+<div class="line">name - Project or module name.</div>
+<div class="line">service_type - MQTT service implementation type.</div>
+<div class="line">role - Generation role: subscriber, publisher, or both.</div>
+<div class="line">scope - Generation scope: module or demo.</div>
+<div class="line">output - Target directory path for generation.</div>
+</div>
+</dd>
+<dt class="field-even">methods<span class="colon">:</span></dt>
+<dd class="field-even"><div class="line-block">
+<div class="line">to_dict - Converts domain model to dictionary representation.</div>
 </div>
 </dd>
 </dl>
 </div></blockquote>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.chip_config">
-<span class="sig-name descname"><span class="pre">chip_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.chip_config" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.output">
+<span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.output" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.role">
+<span class="sig-name descname"><span class="pre">role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.role" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.scope">
+<span class="sig-name descname"><span class="pre">scope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.scope" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.service_type">
+<span class="sig-name descname"><span class="pre">service_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.service_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gen_mqtt_service.core.model.project_setup.ProjectSetup.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/gen_mqtt_service/core/model/project_setup.html#ProjectSetup.to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.to_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Converts domain model to dictionary representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary representation of project setup.</p>
+</dd>
+<dt class="field-even">Exceptions<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -103,7 +146,12 @@ with this program. If not, see &lt;<a class="reference external" href="http://ww
     <ul>
 <li><a class="reference internal" href="#">gen_mqtt_service.core.model.project_setup module</a><ul>
 <li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup"><code class="docutils literal notranslate"><span class="pre">ProjectSetup</span></code></a><ul>
-<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.chip_config"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.chip_config</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.name"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.name</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.output"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.output</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.role"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.role</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.scope"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.scope</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.service_type"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.service_type</span></code></a></li>
+<li><a class="reference internal" href="#gen_mqtt_service.core.model.project_setup.ProjectSetup.to_dict"><code class="docutils literal notranslate"><span class="pre">ProjectSetup.to_dict()</span></code></a></li>
 </ul>
 </li>
 </ul>

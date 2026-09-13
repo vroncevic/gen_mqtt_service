@@ -22,10 +22,11 @@ Info
 from __future__ import annotations
 
 from collections.abc import Mapping
+from datetime import datetime
+from json import loads
 from logging import INFO
 from os import walk
 from os.path import dirname, realpath, relpath
-from datetime import datetime
 
 from ats_utilities.generation.imanager import IGeneratorManager
 from ats_utilities.generation.data import GeneratorData
@@ -34,11 +35,13 @@ from ats_utilities.validation.check_value import not_none
 from ats_utilities.validation.check_type import istype
 from ats_utilities.utils.reflection import to_str
 
+from gen_mqtt_service.core.model.project_setup import ProjectSetup
+
 __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.5'
+__version__ = '1.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -85,36 +88,113 @@ class SubProcessor:
         self._generator = generator
         self._logger = generator.get_context().logger
 
-    def run(self, *, params: Mapping[str, object]) -> Mapping[str, object]:
+    def _build_scheme(
+        self,
+        *,
+        scheme_path: str,
+        service_type: str,
+        role: str,
+        scope: str
+    ) -> Mapping[str, object]:
+        '''
+            Builds dynamic scheme with role and scope exclusions.
+
+            :param scheme_path: Path to base scheme configuration file.
+            :param service_type: Type of service.
+            :param role: Generation role (subscriber, publisher, both).
+            :param scope: Generation scope (module, demo).
+            :return: Resolved scheme configuration dictionary.
+            :exceptions: None.
+        '''
+        with open(scheme_path, 'r', encoding='utf-8') as scheme_file:
+            scheme_data: dict[str, dict[str, object]] = loads(scheme_file.read())
+
+        if service_type in scheme_data:
+            type_config: dict[str, object] = dict(scheme_data[service_type])
+            base_exclude: list[str] = list(type_config.get('exclude', []))
+            base_exclude.append('*client.js*')
+
+            if role == 'subscriber':
+                base_exclude.extend(['*publisher*', '*run_publisher*'])
+            elif role == 'publisher':
+                base_exclude.extend(['*subscriber*', '*run_subscriber*'])
+
+            if scope == 'module':
+                base_exclude.extend([
+                    '*Makefile*',
+                    '*CMakeLists.txt*',
+                    '*package.json*',
+                    '*requirements.txt*',
+                    '*README.md*',
+                    '*docker-compose.yml*',
+                    '*server.js*',
+                    '*main.py*',
+                    '*.sh*'
+                ])
+
+            type_config['exclude'] = base_exclude
+            scheme_data[service_type] = type_config
+
+        return scheme_data
+
+    def run(self, *, params: Mapping[str, object] | ProjectSetup) -> Mapping[str, object]:
         '''
             Executes the generator.
 
-            :param params: The command parameters for generator.
+            :param params: The command parameters for generator or ProjectSetup.
             :return: Return code, stdout and stderr messages.
             :exceptions: None.
         '''
         try:
-            output_dir: str = params.get('output')
-            project_name: str = params.get('name')
-            scheme: str = f'{dirname(realpath(__file__))}/{self._scheme}'
+            output_dir: str = (
+                params.output if isinstance(params, ProjectSetup)
+                else str(params.get('output', './'))
+            )
+            project_name: str = (
+                params.name if isinstance(params, ProjectSetup)
+                else str(params.get('name', 'myapp'))
+            )
+            service_type: str = (
+                params.service_type if isinstance(params, ProjectSetup)
+                else str(params.get('type', params.get('service_type', 'paho')))
+            )
+            role: str = (
+                params.role if isinstance(params, ProjectSetup)
+                else str(params.get('role', 'both'))
+            )
+            scope: str = (
+                params.scope if isinstance(params, ProjectSetup)
+                else str(params.get('scope', 'demo'))
+            )
+
+            scheme_path: str = f'{dirname(realpath(__file__))}/{self._scheme}'
             templates: str = f'{dirname(realpath(__file__))}/{self._templates}'
+
+            scheme_data = self._build_scheme(
+                scheme_path=scheme_path,
+                service_type=service_type,
+                role=role,
+                scope=scope
+            )
 
             success = self._generator.generate(
                 data=GeneratorData(
                     archive_path=templates,
                     target_dir=output_dir,
-                    template_key=params.get('type', 'paho'),
-                    scheme=scheme,
+                    template_key=service_type,
+                    scheme=scheme_data,
                     template_values={
                         'project_name': project_name,
                         'PRO': project_name,
                         'YEAR': str(datetime.now().year),
+                        'ROLE': role,
+                        'SCOPE': scope
                     }
                 )
             )
 
             if success:
-                self._logger.write_log(INFO, '    Generated files:',)
+                self._logger.write_log(INFO, '    Generated files:')
 
                 for root, _, files in walk(output_dir):
                     for file in files:

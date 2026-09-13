@@ -21,14 +21,13 @@ Info
 
 from __future__ import annotations
 
-from collections.abc import Mapping
 from dataclasses import dataclass
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_mqtt_service'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_mqtt_service/blob/dev/LICENSE'
-__version__ = '1.1.5'
+__version__ = '1.1.6'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,7 +41,32 @@ class ProjectSetup:
         It defines:
 
             :attributes:
-                | chip_config - Mapping with chip configuration.
+                | name - Project or module name.
+                | service_type - MQTT service implementation type.
+                | role - Generation role: subscriber, publisher, or both.
+                | scope - Generation scope: module or demo.
+                | output - Target directory path for generation.
+            :methods:
+                | to_dict - Converts domain model to dictionary representation.
     '''
 
-    chip_config: Mapping[str, object]
+    name: str
+    service_type: str
+    role: str
+    scope: str
+    output: str
+
+    def to_dict(self) -> dict[str, str]:
+        '''
+            Converts domain model to dictionary representation.
+
+            :return: Dictionary representation of project setup.
+            :exceptions: None.
+        '''
+        return {
+            'name': self.name,
+            'service_type': self.service_type,
+            'role': self.role,
+            'scope': self.scope,
+            'output': self.output
+        }

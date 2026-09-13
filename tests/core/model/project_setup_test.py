@@ -9,13 +9,53 @@ Info
 
 from __future__ import annotations
 
-import unittest
+from unittest import TestCase, main
 
 from gen_mqtt_service.core.model.project_setup import ProjectSetup
 
 
-class TestProjectSetup(unittest.TestCase):
+class TestProjectSetup(TestCase):
+    '''
+        Tests for ProjectSetup domain model.
+    '''
+
     def test_project_setup_initialization(self) -> None:
-        chip_config = {'key': 'value'}
-        setup = ProjectSetup(chip_config=chip_config)
-        self.assertEqual(setup.chip_config, chip_config)
+        '''
+            Tests initialization and attribute values of ProjectSetup.
+        '''
+        setup = ProjectSetup(
+            name='myapp',
+            service_type='paho',
+            role='subscriber',
+            scope='module',
+            output='/tmp/out'
+        )
+        self.assertEqual(setup.name, 'myapp')
+        self.assertEqual(setup.service_type, 'paho')
+        self.assertEqual(setup.role, 'subscriber')
+        self.assertEqual(setup.scope, 'module')
+        self.assertEqual(setup.output, '/tmp/out')
+
+    def test_project_setup_to_dict(self) -> None:
+        '''
+            Tests dictionary representation of ProjectSetup.
+        '''
+        setup = ProjectSetup(
+            name='myapp',
+            service_type='mosquitto',
+            role='both',
+            scope='demo',
+            output='./demo'
+        )
+        expected = {
+            'name': 'myapp',
+            'service_type': 'mosquitto',
+            'role': 'both',
+            'scope': 'demo',
+            'output': './demo'
+        }
+        self.assertEqual(setup.to_dict(), expected)
+
+
+if __name__ == '__main__':
+    main()

@@ -21,8 +21,10 @@ MQTT defines two types of network entities:
 - message [broker](mqtt_broker.md), and
 - number of clients
 
-Mosquitto ===> Client and Broker (thread safety)
-Paho MQTT ===> Client
+* **Mosquitto** ===> C Client (`libmosquitto`) and Broker (C11, high-performance)
+* **Paho MQTT** ===> Python Client (Clean Architecture, SOLID, typing protocols)
+* **Node MQTT** ===> JavaScript/Node.js Client (`mqtt`, asynchronous event-driven)
+* **Node WS** ===> JavaScript WebSocket Client with embedded Aedes broker
 
 An MQTT [broker](mqtt_broker.md) is a server that receives all messages from the clients and
 then routes the messages to the appropriate destination clients. An MQTT
@@ -73,6 +75,10 @@ The default unencrypted MQTT port is 1883. The encrypted port is 8883.
 ![Abstract layering of MQTT](https://raw.githubusercontent.com/vroncevic/gen_mqtt_service/dev/docs/abstract_layering_of_mqtt.png)
 
 [Protocol support](mqtt_v5.md) more details.
+
+### Implementation and Templates Guide
+
+To generate client and service skeletons for any of these architectures, see the [Templates Architecture & Usage Guide](templates_guide.md).
 
 ### Example
 
